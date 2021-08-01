@@ -1,4 +1,4 @@
-export const REGIONS = [
+export const REGIONS_HISTORY = [
     {
         id: 0,
         name: 'Colombia',
