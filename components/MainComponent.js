@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HistoryDirectory from './HistoryDirectoryComponent';
+import Directory from './DirectoryComponent';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
 
 class Main extends Component {
@@ -11,7 +11,7 @@ class Main extends Component {
     }
 
     render() {
-        return <HistoryDirectory regionsHistory={this.state.regionsHistory} />;
+        return <Directory regions={this.state.regionsHistory} />;
     }
 }
 
