@@ -1,29 +1,29 @@
 import React from 'react';
-import { FlatList, View, Pressable, Text } from 'react-native';
+import { FlatList, View, Pressable, Text, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
 function Directory(props) {
 
     const renderDirectoryItem = ({item}) => {
         return (
-            <View style={{backgroundColor:'#239945', flex:1}}>
-                <View style={{marginVertical:20, marginHorizontal:25, borderRadius:15, border: 'solid', borderColor: '#c8cbae', borderWidth: 2, backgroundColor: '#c8cbae',}}>
-                    <View style={{ height: 115,border:'solid', borderColor:'black', borderWidth:2, overflow:'hidden', borderRadius:15,}}>
+            <View style={styles.backGroundView}>
+                <View style={styles.outerView}>
+                    <View style={styles.innerView}>
                         <ListItem
-                            titleStyle={{fontSize:24, marginBottom:1, marginTop:-14}}
+                            titleStyle={styles.listItemTitle}
                             title={item.name +':'}
-                            containerStyle={{padding:20, border: 'solid', borderColor:'black',backgroundColor: '#c8cbae', fontSize:24}}
+                            containerStyle={styles.containerStyle}
                         />
-                        <View style={{marginHorizontal:10, flex:1,flexDirection:'row', marginTop:-20, justifyContent:'space-around', alignItems: 'center', paddingBottom:20 }}>
+                        <View style={styles.buttonsBoxView}>
                             <Pressable
-                                style={{backgroundColor:'#fff', paddingVertical:5, paddingHorizontal:10, border:'solid', borderWidth:1, borderColor:'black', borderRadius:10,}}
+                                style={styles.pressableStyle}
                             >
                                 <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>History</Text>
                             </Pressable>
                             <Pressable
-                                style={{backgroundColor:'#fff', paddingVertical:5, paddingHorizontal:10, border:'solid', borderWidth:1, borderColor:'black', borderRadius:10,}}
+                                style={styles.pressableStyle}
                             >
-                                <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>Charity</Text>
+                                <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>Geography</Text>
                             </Pressable>
                         </View>
                     </View>
@@ -40,5 +40,55 @@ function Directory(props) {
         />
     );
 }
+
+const styles= StyleSheet.create({
+    backGroundView:{
+        backgroundColor:'#239945'
+        , flex:1
+    },
+    outerView:{
+        marginVertical:20, 
+        marginHorizontal:25, 
+        borderRadius:25, 
+        borderColor: '#c8cbae', 
+        borderWidth: 2, 
+        backgroundColor: '#c8cbae',
+    },
+    innerView:{
+        height: 115,
+        borderColor:'black',
+        overflow:'hidden',
+        borderWidth:1, 
+        borderRadius:25,
+    },
+    listItemTitle:{
+        fontSize:24,
+        marginBottom:1, 
+        marginTop:-14
+    },
+    containerStyle:{
+        padding:20,
+        backgroundColor: '#c8cbae'
+    },
+    buttonsBoxView:{
+        marginHorizontal:10, 
+        flex:1,flexDirection:'row', 
+        marginTop:-20, 
+        justifyContent:'space-around', 
+        alignItems: 'center', 
+        paddingBottom:20
+    },
+    pressableStyle:{
+        width:135,
+        backgroundColor:'#fff', 
+        paddingVertical:5, 
+        paddingHorizontal:10, 
+        borderWidth:0.5, 
+        borderColor:'#fff', 
+        borderRadius:10, 
+        justifyContent:'center', 
+        alignItems:'center'
+    }
+})
 
 export default Directory;
