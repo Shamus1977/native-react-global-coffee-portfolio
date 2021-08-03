@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ButtonDirectory from './ButtonDirectoryComponent';
+import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
+
 
 class Main extends Component {
     constructor(props) {
@@ -11,11 +12,11 @@ class Main extends Component {
     }
 
     render() {
-        return <ButtonDirectory 
-            regions={this.state.regionsHistory}
-            buttonRight='Geography'
-            buttonLeft='History'
-        />;
+        return (
+            <HistoryGeographyDirectory
+                regions={this.state.regionsHistory}
+            />
+        )
     }
 }
 

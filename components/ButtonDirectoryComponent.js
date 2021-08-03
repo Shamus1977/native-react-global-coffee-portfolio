@@ -1,5 +1,4 @@
-import { setStatusBarNetworkActivityIndicatorVisible } from 'expo-status-bar';
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, View, Pressable, Text, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
