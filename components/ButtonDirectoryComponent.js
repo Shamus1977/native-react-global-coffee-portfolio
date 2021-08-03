@@ -1,8 +1,16 @@
-import React from 'react';
+import { setStatusBarNetworkActivityIndicatorVisible } from 'expo-status-bar';
+import React, { Component } from 'react';
 import { FlatList, View, Pressable, Text, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-function Directory(props) {
+function ButtonDirectory(props) {
+
+    const addButtons = (array, btnRight, btnLeft) => {
+        const upDatedObject = array.map( object => ({...object, buttonRight:btnRight, buttonLeft:btnLeft }));
+        return upDatedObject;
+    }
+
+    const updatedArray = addButtons(props.regions, props.buttonRight, props.buttonLeft);
 
     const renderDirectoryItem = ({item}) => {
         return (
@@ -18,12 +26,12 @@ function Directory(props) {
                             <Pressable
                                 style={styles.pressableStyle}
                             >
-                                <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>History</Text>
+                                <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>{item.buttonLeft}</Text>
                             </Pressable>
                             <Pressable
                                 style={styles.pressableStyle}
                             >
-                                <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>Geography</Text>
+                                <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>{item.buttonRight}</Text>
                             </Pressable>
                         </View>
                     </View>
@@ -34,7 +42,7 @@ function Directory(props) {
 
     return (
         <FlatList
-            data={props.regions}
+            data={updatedArray}
             renderItem={renderDirectoryItem}
             keyExtractor={item => item.id.toString()}
         />
@@ -91,4 +99,4 @@ const styles= StyleSheet.create({
     }
 })
 
-export default Directory;
+export default ButtonDirectory;

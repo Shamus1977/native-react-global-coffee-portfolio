@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from './DirectoryComponent';
+import ButtonDirectory from './ButtonDirectoryComponent';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
 
 class Main extends Component {
@@ -11,7 +11,11 @@ class Main extends Component {
     }
 
     render() {
-        return <Directory regions={this.state.regionsHistory} />;
+        return <ButtonDirectory 
+            regions={this.state.regionsHistory}
+            buttonRight='Geography'
+            buttonLeft='History'
+        />;
     }
 }
 
