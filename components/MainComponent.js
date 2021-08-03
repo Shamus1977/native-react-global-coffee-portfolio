@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
+import { Platform, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { Constants } from 'expo-constants';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
-import { REGIONS_HISTORY } from '../shared/regionsHistory';
+import HistoryDirectoryComponent from './HistoryDirectoryComponent';
+import CharityTourDirectory from './CharityTourDirectoryComponent';
+
+const HistoryDirectoryNavigator = createStackNavigator(
+    {
+        HistoryGeographyDirectory: {screen: HistoryGeographyDirectory},
+        HistoryDirectoryComponent: {screen: HistoryDirectoryComponent},
+        
+    },
+    {
+        initialRouteName: 'HistoryGeographyDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+);
+
+const AppNavigator = createAppContainer(HistoryDirectoryNavigator);
 
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            regionsHistory: REGIONS_HISTORY
-        };
-    }
 
     render() {
         return (
-            <HistoryGeographyDirectory
-                regions={this.state.regionsHistory}
-            />
+            <View
+                style={{
+                    flex: 1,
+                    
+                }}
+            >
+                <AppNavigator />
+            </View>
         )
     }
 }

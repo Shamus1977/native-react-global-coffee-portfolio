@@ -10,7 +10,9 @@ function ButtonDirectory(props) {
     }
 
     const updatedArray = addButtons(props.regions, props.buttonRight, props.buttonLeft);
-
+    
+    const navigate = props.navigate;
+    
     const renderDirectoryItem = ({item}) => {
         return (
             <View style={styles.backGroundView}>
@@ -24,6 +26,7 @@ function ButtonDirectory(props) {
                         <View style={styles.buttonsBoxView}>
                             <Pressable
                                 style={styles.pressableStyle}
+                            onPress={() => navigate('HistoryDirectoryComponent')}
                             >
                                 <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>{item.buttonLeft}</Text>
                             </Pressable>

@@ -1,4 +1,4 @@
-export const REGIONS_CHARITES = [
+export const REGIONS_CHARITIES = [
     {
         id: 0,
         name: 'Colombia',

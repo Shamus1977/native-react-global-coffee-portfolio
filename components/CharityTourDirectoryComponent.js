@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonDirectory from './ButtonDirectoryComponent';
 
-function HistoryGeographyDirectory(props){
+function CharityTourDirectory(props){
     return (
         <ButtonDirectory
             regions={props.regions}
@@ -11,4 +11,4 @@ function HistoryGeographyDirectory(props){
     )
 }
 
-export default HistoryGeographyDirectory;
+export default CharityTourDirectory;
