@@ -4,6 +4,8 @@ import { ListItem } from 'react-native-elements';
 
 function Directory(props) {
 
+    const navigate = props.navigate;
+
     const renderDirectoryItem = ({item}) => {
         return (
             <View style={styles.backGroundView}>
@@ -14,7 +16,7 @@ function Directory(props) {
                             title={item.name + ':'}
                             subtitleStyle={styles.listItemSubtitle}
                             subtitle={item.description}
-                            onPress={() => props.onPress(item.id)}
+                            onPress={() => navigate('RegionDetail', { regionId: item.id })}
                             containerStyle={styles.containerStyle}
                         />
                     </View>

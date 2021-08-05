@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { Constants } from 'expo-constants';
+import  Constants  from 'expo-constants';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
+import RegionDetail from './regionDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
 
 const HistoryDirectoryNavigator = createStackNavigator(
     {
         HistoryGeographyDirectory: {screen: HistoryGeographyDirectory},
         HistoryDirectory: {screen: HistoryDirectory},
+        RegionDetail: {screen: RegionDetail},
         GeographyDirectory: {screen: GeographyDirectory},
         
     },
@@ -28,6 +30,8 @@ const HistoryDirectoryNavigator = createStackNavigator(
     }
 );
 
+
+
 const AppNavigator = createAppContainer(HistoryDirectoryNavigator);
 
 
@@ -38,7 +42,7 @@ class Main extends Component {
             <View
                 style={{
                     flex: 1,
-                    /********************* PUT Platform FUNCTION BACK IN!!! */
+                    paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
                 }}
             >
                 <AppNavigator />

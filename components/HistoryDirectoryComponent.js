@@ -24,16 +24,17 @@ class HistoryDirectory extends Component{
 
 
     render(){
+        const { navigate } = this.props.navigation;
         return (
-
             <View style={{flex: 1}}>
                 <Directory
                     regions={this.state.regions}
                     onPress={regionId => this.onRegionSelect(regionId)}
+                    navigate={navigate}
                 />
                 <RegionDetail
-                    region={this.state.regions.filter(
-                        region => region.id === this.state.regionSelected)[0]}
+                    regions={this.state.regions}
+                    navigation={this.props.navigation}
                 />
             </View>
         )

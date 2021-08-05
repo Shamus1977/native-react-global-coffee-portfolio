@@ -1,6 +1,7 @@
-import React  from 'react';
+import React, { Component }  from 'react';
 import { Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
+import { REGIONS_HISTORY } from '../shared/regionsHistory';
 
 function RenderRegionDetail({region}) {
     if (region) {
@@ -18,9 +19,23 @@ function RenderRegionDetail({region}) {
     return <View />;
 }
 
-function RegionDetail(props) {
+class RegionDetail extends Component  {
+    constructor(props){
+        super(props);
+        this.state ={
+            regions: REGIONS_HISTORY
+        }
+    }
 
-        return <RenderRegionDetail region={props.region}  />;
+    static navigationOptions = {
+        title: 'Region Information'
+    }
+
+    render(){
+        const regionId = this.props.navigation.getParam('regionId');
+        const region = this.state.regions.filter(region => region.id === regionId)[0];
+        return <RenderRegionDetail region={region}  />;
+    }
 }
 
 export default RegionDetail;
