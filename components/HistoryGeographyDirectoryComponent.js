@@ -25,6 +25,8 @@ class HistoryGeographyDirectory extends Component{
                 regions={this.state.regions}
                 buttonRight='Geography'
                 buttonLeft='History'
+                pressButtonLeft='HistoryDirectory'
+                pressButtonRight='GeographyDirectory'
                 navigate={navigate}
             />
         )

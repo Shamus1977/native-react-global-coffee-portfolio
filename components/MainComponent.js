@@ -4,13 +4,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { Constants } from 'expo-constants';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
-import HistoryDirectoryComponent from './HistoryDirectoryComponent';
-import CharityTourDirectory from './CharityTourDirectoryComponent';
+import HistoryDirectory from './HistoryDirectoryComponent';
+import GeographyDirectory from './GeographyDirectoryComponent';
 
 const HistoryDirectoryNavigator = createStackNavigator(
     {
         HistoryGeographyDirectory: {screen: HistoryGeographyDirectory},
-        HistoryDirectoryComponent: {screen: HistoryDirectoryComponent},
+        HistoryDirectory: {screen: HistoryDirectory},
+        GeographyDirectory: {screen: GeographyDirectory},
         
     },
     {
@@ -37,7 +38,7 @@ class Main extends Component {
             <View
                 style={{
                     flex: 1,
-                    
+                    /********************* PUT Platform FUNCTION BACK IN!!! */
                 }}
             >
                 <AppNavigator />

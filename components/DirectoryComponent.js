@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Pressable, Text, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
 function Directory(props) {
@@ -11,7 +11,10 @@ function Directory(props) {
                     <View style={styles.innerView}>
                         <ListItem
                             titleStyle={styles.listItemTitle}
-                            title={item.name +':'}
+                            title={item.name + ':'}
+                            subtitleStyle={styles.listItemSubtitle}
+                            subtitle={item.description}
+                            onPress={() => props.onPress(item.id)}
                             containerStyle={styles.containerStyle}
                         />
                     </View>
@@ -43,7 +46,6 @@ const styles= StyleSheet.create({
         backgroundColor: '#c8cbae',
     },
     innerView:{
-        height: 115,
         borderColor:'black',
         overflow:'hidden',
         borderWidth:1, 
@@ -51,13 +53,14 @@ const styles= StyleSheet.create({
     },
     listItemTitle:{
         fontSize:24,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     containerStyle:{
         padding:20,
-        backgroundColor: '#c8cbae'
+        backgroundColor: '#c8cbae',
     },
+    listItemSubtitle:{
+        fontSize:20
+    }
 })
 
 export default Directory;

@@ -4,12 +4,22 @@ import { ListItem } from 'react-native-elements';
 
 function ButtonDirectory(props) {
 
-    const addButtons = (array, btnRight, btnLeft) => {
-        const upDatedObject = array.map( object => ({...object, buttonRight:btnRight, buttonLeft:btnLeft }));
+    const addButtons = (array, btnRight, btnLeft,pressLeft,pressRight) => {
+        const upDatedObject = array.map( object => ({...object, 
+                                                    buttonRight:btnRight, 
+                                                    buttonLeft:btnLeft, 
+                                                    pressButtonLeft:pressLeft,
+                                                    pressButtonRight: pressRight
+                                                    }));
         return upDatedObject;
     }
 
-    const updatedArray = addButtons(props.regions, props.buttonRight, props.buttonLeft);
+    const updatedArray = addButtons(props.regions, 
+                                    props.buttonRight, 
+                                    props.buttonLeft, 
+                                    props.pressButtonLeft,
+                                    props.pressButtonRight
+                                    );
     
     const navigate = props.navigate;
     
@@ -26,12 +36,13 @@ function ButtonDirectory(props) {
                         <View style={styles.buttonsBoxView}>
                             <Pressable
                                 style={styles.pressableStyle}
-                            onPress={() => navigate('HistoryDirectoryComponent')}
+                                onPress={() => navigate(item.pressButtonLeft)}
                             >
                                 <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>{item.buttonLeft}</Text>
                             </Pressable>
                             <Pressable
                                 style={styles.pressableStyle}
+                                onPress={() => navigate(item.pressButtonRight)}
                             >
                                 <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>{item.buttonRight}</Text>
                             </Pressable>
