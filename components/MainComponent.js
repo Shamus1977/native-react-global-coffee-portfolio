@@ -4,6 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import  Constants  from 'expo-constants';
+import About from './AboutComponent';
+import Contact from './ContactComponent';
 import Home from './HomeComponent';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
@@ -51,14 +53,54 @@ const HomeNavigator = createStackNavigator(
     }
 );
 
+const AboutNavigator = createStackNavigator(
+    {
+        About: { screen: About }
+
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+)
+
+const ContactNavigator = createStackNavigator(
+    {
+        Contact: { screen: Contact }
+
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+)
+
+
+
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
         History: { screen: HistoryDirectoryNavigator },
-        Geography: { screen: HistoryDirectoryNavigator }
+        Geography: { screen: HistoryDirectoryNavigator },
+        About: {screen: AboutNavigator},
+        Contact: {screen: Contact}
     },
     {
-        drawerBackgroundColor: '#CEC8FF'
+        drawerBackgroundColor: '#c8cbae'
     }
 );
 
