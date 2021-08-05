@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import  Constants  from 'expo-constants';
+import Home from './HomeComponent';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
 import RegionDetail from './regionDetailComponent';
@@ -30,9 +32,37 @@ const HistoryDirectoryNavigator = createStackNavigator(
     }
 );
 
+const HomeNavigator = createStackNavigator(
+    {
+        Home: { screen: Home }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
+const MainNavigator = createDrawerNavigator(
+    {
+        Home: { screen: HomeNavigator },
+        History: { screen: HistoryDirectoryNavigator },
+        Geography: { screen: HistoryDirectoryNavigator }
+    },
+    {
+        drawerBackgroundColor: '#CEC8FF'
+    }
+);
 
 
-const AppNavigator = createAppContainer(HistoryDirectoryNavigator);
+
+const AppNavigator = createAppContainer(MainNavigator);
 
 
 class Main extends Component {
