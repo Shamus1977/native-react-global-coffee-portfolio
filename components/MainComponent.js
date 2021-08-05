@@ -34,16 +34,18 @@ const HistoryDirectoryNavigator = createStackNavigator(
 
 const HomeNavigator = createStackNavigator(
     {
-        Home: { screen: Home }
+        Home: { screen: Home },
+        HistoryGeographyDirectory: {screen: HistoryGeographyDirectory}
+
     },
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#c8cbae'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
