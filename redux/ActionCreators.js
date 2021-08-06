@@ -115,3 +115,20 @@ export const addTours = tours => ({
     type: ActionTypes.ADD_TOURS,
     payload: tours
 });
+
+
+/***************************************  FAVORITES ACTIONS ***************************************/
+/**********************************************************************************************/
+
+
+
+export const postFavorite = regionId => dispatch => {
+    setTimeout( () => {
+        dispatch(addFavorite(regionId));
+    }, 2000)
+}
+
+const addFavorite = regionId => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: regionId
+})

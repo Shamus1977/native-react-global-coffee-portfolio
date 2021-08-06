@@ -1,14 +1,22 @@
 import React, { Component }  from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import RenderComments from './RenderComments';
 import { connect } from 'react-redux';
+import RenderComments from './RenderComments';
+import { postFavorite } from '../redux/ActionCreators';
+
+
 
 const mapStateToProps = state => {
     return {
         regions: state.regionsHistory,
-        comments: state.regionsComments
+        comments: state.regionsComments,
+        favorites: state.favorites
     }
+}
+
+const mapDispatchToProps =  {
+    postFavorite: regionId => (postFavorite(regionId))
 }
 
 
@@ -36,19 +44,14 @@ function RenderRegionDetail({region, favorite, markFavorite}) {
 }
 
 class RegionDetail extends Component  {
-    constructor(props){
-        super(props);
-        this.state ={
-            favorite: false,
-        }
-    }
+
 
     static navigationOptions = {
         title: 'Region Information'
     }
 
-    markFavorite(){
-        this.setState({favorite:true})
+    markFavorite(regionId){
+        this.props.postFavorite(regionId)
     }
 
     render(){
@@ -59,8 +62,8 @@ class RegionDetail extends Component  {
             <ScrollView>
                 <RenderRegionDetail 
                     region={region}
-                    favorite={this.state.favorite}
-                    markFavorite={ () => this.markFavorite() }
+                    favorite={this.props.favorites.includes(regionId)}
+                    markFavorite={ () => this.markFavorite(regionId) }
                 />
                 <RenderComments comments={comments} />
             </ScrollView>
@@ -68,4 +71,4 @@ class RegionDetail extends Component  {
     }
 }
 
-export default connect(mapStateToProps)(RegionDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(RegionDetail);
