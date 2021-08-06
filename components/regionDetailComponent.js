@@ -1,7 +1,10 @@
 import React, { Component }  from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
+import RenderComments from './RenderComments';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
+import { REGION_COMMENTS } from '../shared/regionComments';
+
 
 function RenderRegionDetail({region}) {
     if (region) {
@@ -23,7 +26,8 @@ class RegionDetail extends Component  {
     constructor(props){
         super(props);
         this.state ={
-            regions: REGIONS_HISTORY
+            regions: REGIONS_HISTORY,
+            comments: REGION_COMMENTS
         }
     }
 
@@ -33,8 +37,14 @@ class RegionDetail extends Component  {
 
     render(){
         const regionId = this.props.navigation.getParam('regionId');
+        const comments = this.state.comments.filter(comment => comment.regionId === regionId);
         const region = this.state.regions.filter(region => region.id === regionId)[0];
-        return <RenderRegionDetail region={region}  />;
+        return (
+            <ScrollView>
+                <RenderRegionDetail region={region}  />
+                <RenderComments comments={comments} />
+            </ScrollView>
+        );
     }
 }
 
