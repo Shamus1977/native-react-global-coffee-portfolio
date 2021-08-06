@@ -16,6 +16,7 @@ import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
 import RegionDetail from './regionDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
+import DateSearch from './DateSearchComponent';
 
 const mapDispatchToProps = {
     fetchRegionsHistory,
@@ -90,6 +91,33 @@ const HomeNavigator = createStackNavigator(
 const AboutNavigator = createStackNavigator(
     {
         About: { screen: About,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon 
+                    name='list'
+                    type='font-awesome'
+                    iconStyle={styles.iconStyle}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        }
+
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+)
+
+const DateSearchNavigator = createStackNavigator(
+    {
+        DateSearch: { screen: DateSearch,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
                     name='list'
@@ -193,6 +221,19 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='globe'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        DateSearch: {screen: DateSearchNavigator,
+            navigationOptions: {
+                drawerLabel:'Search Tour dates',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='book'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
