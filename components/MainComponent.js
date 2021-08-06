@@ -28,35 +28,10 @@ const HistoryDirectoryNavigator = createStackNavigator(
                 />
             })
         },
-        HistoryDirectory: {screen: HistoryDirectory,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon 
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.iconStyle}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
-        },
+        HistoryDirectory: {screen: HistoryDirectory},
         RegionDetail: {screen: RegionDetail,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon 
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.iconStyle}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
         },
-        GeographyDirectory: {screen: GeographyDirectory,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon 
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.iconStyle}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
+        GeographyDirectory: {screen: GeographyDirectory
         },
         
     },
@@ -86,16 +61,7 @@ const HomeNavigator = createStackNavigator(
                 />
             })
         },
-        HistoryGeographyDirectory: {screen: HistoryGeographyDirectory,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon 
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.iconStyle}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
-        }
+        HistoryGeographyDirectory: {screen: HistoryGeographyDirectory}
 
     },
     {

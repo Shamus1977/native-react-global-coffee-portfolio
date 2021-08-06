@@ -1,9 +1,9 @@
 import React, { Component }  from 'react';
-import { Text, View, ScrollView, FlatList } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import RenderComments from './RenderComments';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
-import { REGION_COMMENTS } from '../shared/regionComments';
+import { REGIONS_COMMENTS } from '../shared/regionsComments';
 
 
 function RenderRegionDetail({region, favorite, markFavorite}) {
@@ -34,7 +34,7 @@ class RegionDetail extends Component  {
         super(props);
         this.state ={
             regions: REGIONS_HISTORY,
-            comments: REGION_COMMENTS,
+            comments: REGIONS_COMMENTS,
             favorite: false,
         }
     }

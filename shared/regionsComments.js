@@ -1,4 +1,4 @@
-export const REGION_COMMENTS = 
+export const REGIONS_COMMENTS = 
 [
     {
         id: 0,
