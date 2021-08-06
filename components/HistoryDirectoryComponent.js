@@ -3,6 +3,7 @@ import Directory from './DirectoryComponent';
 import RegionDetail from './regionDetailComponent';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -30,6 +31,19 @@ class HistoryDirectory extends Component{
 
     render(){
         const { navigate } = this.props.navigation;
+
+        if(this.props.regions.isLoading){
+            return (<View style={ {flex:1, justifyContent:'center', alignContent: 'center'}}>
+                        <Loading />
+                    </View>)
+        }
+
+        if(this.props.regions.errMess){
+            return (<View style={ {flex:1, justifyContent:'center', alignContent: 'center'}}>
+                        <Loading />
+                    </View>)
+        }
+
         return (
             <View style={{flex: 1}}>
                 <Directory

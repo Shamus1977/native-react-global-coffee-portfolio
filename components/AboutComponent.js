@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {ScrollView, Text, FlatList} from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
+import Loading from './LoadingComponent';
 
 
 const mapStateToProps = state => {
@@ -9,9 +10,6 @@ const mapStateToProps = state => {
         charities: state.charities
     };
 }
-
-
-
 
 const Mission = (props) => {
     return (
@@ -36,6 +34,33 @@ class About extends Component {
                     subtitle={item.description}
                     
                 />
+            )
+        }
+        
+        if(this.props.charities.isLoading){
+            return (
+                <ScrollView>
+                <Mission />
+                <Card
+                    title='Featured Charities'
+                >
+                    <Loading />
+                </Card>
+            </ScrollView>
+            )
+        }
+
+        if(this.props.charities.errMess){
+            return (
+                <ScrollView>
+                <Mission />
+                <Card
+                    title='Featured Charities'
+                >
+                
+                <Text>Oh no...{this.props.charities.errMess}</Text>
+                </Card>
+            </ScrollView>
             )
         }
 

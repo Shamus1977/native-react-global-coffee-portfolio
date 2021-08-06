@@ -1,6 +1,9 @@
 import React, { Component} from 'react';
-import ButtonDirectory from './ButtonDirectoryComponent';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
+import ButtonDirectory from './ButtonDirectoryComponent';
+import Loading from './LoadingComponent';
+
 
 
 const mapStateToProps = state => {
@@ -20,6 +23,20 @@ class HistoryGeographyDirectory extends Component{
     render() {
 
     const { navigate } = this.props.navigation;
+
+        if(this.props.regions.isLoading){
+            return (
+                <View style={ {flex:1, justifyContent:'center', alignContent: 'center'}}>
+                    <Loading />
+                </View>
+            )
+        }
+
+        if(this.props.regions.errMess){
+            return (<View style={ {flex:1, justifyContent:'center', alignContent: 'center'}}>
+                        <Loading />
+                    </View>)
+        }
 
         return (
             <ButtonDirectory

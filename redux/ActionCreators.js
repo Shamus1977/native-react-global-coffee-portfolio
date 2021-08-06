@@ -37,11 +37,11 @@ export const addRegionsComments = regionsComments => ({
 
 export const fetchRegionsHistory = () => dispatch => {
 
-    dispatch(regionsHistoryLoading());
+    dispatch(regionsHistoryLoading(REGIONS_HISTORY));
 
     setTimeout(() => {
         dispatch(addRegionsHistory(REGIONS_HISTORY));
-    }, 2000);
+    }, 10000);
 };
 
 export const regionsHistoryLoading = () => ({
@@ -70,7 +70,7 @@ export const fetchCharities = () => dispatch => {
 
     setTimeout(() => {
         dispatch(addCharities(CHARITIES));
-    }, 2000);
+    }, 10000);
 };
 
 export const charitiesLoading = () => ({
@@ -99,7 +99,7 @@ export const fetchTours = () => dispatch => {
 
     setTimeout(() => {
         dispatch(addTours(TOURS));
-    }, 2000);
+    }, 10000);
 };
 
 export const toursLoading = () => ({
