@@ -6,6 +6,9 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import  SafeAreaView  from 'react-native-safe-area-view';
 import  Constants  from 'expo-constants';
+import { connect } from 'react-redux';
+import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
+            fetchTours } from '../redux/ActionCreators';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
@@ -13,6 +16,13 @@ import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
 import RegionDetail from './regionDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
+
+const mapDispatchToProps = {
+    fetchRegionsHistory,
+    fetchRegionsComments,
+    fetchCharities,
+    fetchTours
+}
 
 
 const HistoryDirectoryNavigator = createStackNavigator(
@@ -232,6 +242,13 @@ const AppNavigator = createAppContainer(MainNavigator);
 
 class Main extends Component {
 
+    componentDidMount(){
+        this.props.fetchRegionsHistory();
+        this.props.fetchRegionsComments();
+        this.props.fetchCharities();
+        this.props.fetchTours();
+    }
+
     render() {
         return (
             <View
@@ -273,4 +290,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Main;
+export default connect(null,mapDispatchToProps)(Main);

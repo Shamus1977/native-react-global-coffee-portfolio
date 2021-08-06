@@ -73,7 +73,7 @@ export const fetchCharities = () => dispatch => {
     }, 2000);
 };
 
-export const charitesLoading = () => ({
+export const charitiesLoading = () => ({
     type: ActionTypes.CHARITIES_LOADING
 });
 

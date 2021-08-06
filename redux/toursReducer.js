@@ -12,6 +12,8 @@ export const toursReducer = (state = {
         case ActionTypes.TOURS_FAILED :
             return {...state, isLoading: false, errMess: action.payload};
         case ActionTypes.TOURS_LOADING :
-            return {...state, isLoading: true, errMess: null, tours:[]}
+            return {...state, isLoading: true, errMess: null, tours:[]};
+        default:
+            return state;
     }
 }

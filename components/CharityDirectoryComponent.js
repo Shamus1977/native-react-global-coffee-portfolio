@@ -1,16 +1,21 @@
 import React from 'react';
 import Directory from './DirectoryComponent';
-import { REGIONS_CHARITIES } from '../shared/regionsCharities';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+        charities: state.charites
+    }
+}
 
 
 function CharityDirectoryComponent(props){
 
-    const regions = REGIONS_CHARITIES;
     return (
         <Directory
-            regions={regions}
+            regions={props.charites.charites}
         />
     )
 }
 
-export default CharityDirectoryComponent;
+export default connect(mapStateToProps)(CharityDirectoryComponent);

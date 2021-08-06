@@ -2,8 +2,14 @@ import React, { Component }  from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import RenderComments from './RenderComments';
-import { REGIONS_HISTORY } from '../shared/regionsHistory';
-import { REGIONS_COMMENTS } from '../shared/regionsComments';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+        regions: state.regionsHistory,
+        comments: state.regionsComments
+    }
+}
 
 
 function RenderRegionDetail({region, favorite, markFavorite}) {
@@ -33,8 +39,6 @@ class RegionDetail extends Component  {
     constructor(props){
         super(props);
         this.state ={
-            regions: REGIONS_HISTORY,
-            comments: REGIONS_COMMENTS,
             favorite: false,
         }
     }
@@ -49,8 +53,8 @@ class RegionDetail extends Component  {
 
     render(){
         const regionId = this.props.navigation.getParam('regionId');
-        const comments = this.state.comments.filter(comment => comment.regionId === regionId);
-        const region = this.state.regions.filter(region => region.id === regionId)[0];
+        const comments = this.props.comments.regionsComments.filter(comment => comment.regionId === regionId);
+        const region = this.props.regions.regionsHistory.filter(region => region.id === regionId)[0];
         return (
             <ScrollView>
                 <RenderRegionDetail 
@@ -64,4 +68,4 @@ class RegionDetail extends Component  {
     }
 }
 
-export default RegionDetail;
+export default connect(mapStateToProps)(RegionDetail);

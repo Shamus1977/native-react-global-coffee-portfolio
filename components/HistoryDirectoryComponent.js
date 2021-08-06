@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import Directory from './DirectoryComponent';
 import RegionDetail from './regionDetailComponent';
 import { View } from 'react-native';
-import { REGIONS_HISTORY } from '../shared/regionsHistory';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+        regions: state.regionsHistory
+    }
+}
 
 
 class HistoryDirectory extends Component{
     constructor(props){
         super(props);
         this.state={
-            regions: REGIONS_HISTORY,
             regionSelected: null,
         }
     }
@@ -28,12 +33,12 @@ class HistoryDirectory extends Component{
         return (
             <View style={{flex: 1}}>
                 <Directory
-                    regions={this.state.regions}
+                    regions={this.props.regions.regionsHistory}
                     onPress={regionId => this.onRegionSelect(regionId)}
                     navigate={navigate}
                 />
                 <RegionDetail
-                    regions={this.state.regions}
+                    regions={this.props.regions.regionsHistory}
                     navigation={this.props.navigation}
                 />
             </View>
@@ -41,4 +46,4 @@ class HistoryDirectory extends Component{
     }
 }
 
-export default HistoryDirectory;
+export default connect(mapStateToProps)(HistoryDirectory);
