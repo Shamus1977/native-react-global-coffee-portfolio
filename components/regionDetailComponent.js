@@ -1,12 +1,12 @@
 import React, { Component }  from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Icon } from 'react-native-elements';
 import RenderComments from './RenderComments';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
 import { REGION_COMMENTS } from '../shared/regionComments';
 
 
-function RenderRegionDetail({region}) {
+function RenderRegionDetail({region, favorite, markFavorite}) {
     if (region) {
         return (
             <Card 
@@ -16,6 +16,13 @@ function RenderRegionDetail({region}) {
                 <Text style={{margin: 10}}>
                     {region.description}
                 </Text>
+                <Icon
+                    name={favorite ? 'heart' : 'heart-o' }
+                    type='font-awesome'
+                    color='#f50'
+                    onPress={() =>favorite ? 
+                        console.log('Already set as a favorite') : markFavorite()}
+                />
             </Card>
         );
     }
@@ -27,12 +34,17 @@ class RegionDetail extends Component  {
         super(props);
         this.state ={
             regions: REGIONS_HISTORY,
-            comments: REGION_COMMENTS
+            comments: REGION_COMMENTS,
+            favorite: false,
         }
     }
 
     static navigationOptions = {
         title: 'Region Information'
+    }
+
+    markFavorite(){
+        this.setState({favorite:true})
     }
 
     render(){
@@ -41,7 +53,11 @@ class RegionDetail extends Component  {
         const region = this.state.regions.filter(region => region.id === regionId)[0];
         return (
             <ScrollView>
-                <RenderRegionDetail region={region}  />
+                <RenderRegionDetail 
+                    region={region}
+                    favorite={this.state.favorite}
+                    markFavorite={ () => this.markFavorite() }
+                />
                 <RenderComments comments={comments} />
             </ScrollView>
         );
