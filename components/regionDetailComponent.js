@@ -21,34 +21,37 @@ const mapDispatchToProps =  {
 }
 
 
-function RenderRegionDetail({region, favorite, markFavorite, onShowModal}) {
+function RenderRegionDetail({region, favorite, markFavorite, onShowModal, comments}) {
     if (region) {
         return (
-            <Card 
-                featuredTitle={region.name}
-                image={require('../assets/images/coffee-beans-on-board.jpg')}
-            >
-                <Text style={{margin: 10}}>
-                    {region.description}
-                </Text>
-                <View style={styles.cardRow}>
-                    <Icon
-                        name={favorite ? 'heart' : 'heart-o' }
-                        type='font-awesome'
-                        color='#f50'
-                        raised
-                        onPress={() =>favorite ? 
-                            console.log('Already set as a favorite') : markFavorite()}
-                    />
-                    <Icon
-                        name='pencil'
-                        type='font-awesome'
-                        color='blue'
-                        raised
-                        onPress={() => onShowModal()}
-                    />
-                </View>
-            </Card>
+            <ScrollView>
+                <Card 
+                    featuredTitle={region.name}
+                    image={require('../assets/images/coffee-beans-on-board.jpg')}
+                >
+                    <Text style={{margin: 10}}>
+                        {region.description}
+                    </Text>
+                    <View style={styles.cardRow}>
+                        <Icon
+                            name={favorite ? 'heart' : 'heart-o' }
+                            type='font-awesome'
+                            color='#f50'
+                            raised
+                            onPress={() =>favorite ? 
+                                console.log('Already set as a favorite') : markFavorite()}
+                        />
+                        <Icon
+                            name='pencil'
+                            type='font-awesome'
+                            color='blue'
+                            raised
+                            onPress={() => onShowModal()}
+                        />
+                    </View>
+                </Card>
+                <RenderComments comments={comments} />
+            </ScrollView>
         );
     }
     return <View />;
@@ -105,6 +108,7 @@ class RegionDetail extends Component  {
                     favorite={this.props.favorites.includes(regionId)}
                     markFavorite={ () => this.markFavorite(regionId) }
                     onShowModal={ () => this.toggleModal()}
+                    comments={comments}
                 />
                 <Modal
                     animationType={'slide'}
@@ -156,7 +160,6 @@ class RegionDetail extends Component  {
                         </View>
                     </View>
                 </Modal>
-                <RenderComments comments={comments} />
             </ScrollView>
         );
     }

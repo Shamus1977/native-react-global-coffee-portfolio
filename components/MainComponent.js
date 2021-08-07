@@ -17,6 +17,7 @@ import HistoryDirectory from './HistoryDirectoryComponent';
 import RegionDetail from './regionDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
 import DateSearch from './DateSearchComponent';
+import Favorites from './Favorites';
 
 const mapDispatchToProps = {
     fetchRegionsHistory,
@@ -142,6 +143,33 @@ const DateSearchNavigator = createStackNavigator(
     }
 )
 
+const FavoritesNavigator = createStackNavigator(
+    {
+        Favorites: { screen: Favorites,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon 
+                    name='list'
+                    type='font-awesome'
+                    iconStyle={styles.iconStyle}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        }
+
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+)
+
 const ContactNavigator = createStackNavigator(
     {
         Contact: { screen: Contact,
@@ -234,6 +262,18 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='book'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Favorites: {screen: FavoritesNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
