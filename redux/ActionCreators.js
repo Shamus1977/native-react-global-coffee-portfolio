@@ -28,6 +28,28 @@ export const addRegionsComments = regionsComments => ({
     payload: regionsComments
 });
 
+export const postRegionComment =( regionId , rating, author, text ) => dispatch => {
+    const newComment = {
+        regionId,
+        rating,
+        author,
+        text,
+        date: new Date().toISOString(),
+    };
+
+    setTimeout( () => {
+        dispatch(addRegionComment(newComment));
+    },
+    2000);
+};
+
+export const addRegionComment = comment => (
+    {
+        type: ActionTypes.ADD_REGION_COMMENT,
+        payload: comment
+    }
+);
+
 
 
 /***************************************  REGIONS HISTORY ACTIONS ***********************************/
