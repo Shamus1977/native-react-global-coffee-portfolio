@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal} from 'react-native';
 
 class DateSearch extends Component {
     constructor(props){
@@ -11,6 +11,7 @@ class DateSearch extends Component {
             campingSpots: false,
             date: new Date(),
             showCalander: false,
+            showModal: false,
         };
     }
 
@@ -18,15 +19,24 @@ class DateSearch extends Component {
         title: 'Search Tours'
     }
 
+    toggleModal(){
+        this.setState({showModal: !this.state.showModal})
+    }
+
     handleReservation() {
         console.log(JSON.stringify(this.state));
+        this.toggleModal();
+    }
+
+    resetForm(){
         this.setState({
             adults: 1,
             children: 0,
             campingSpots: false,
             date: new Date(),
             showCalander: false,
-        })
+            showModal: false,
+        });
     }
 
     render(){
@@ -54,6 +64,7 @@ class DateSearch extends Component {
                         selectedValue={this.state.children}
                         onValueChange={ value => this.setState({children: value})}
                     >
+                        <Picker.Item label='0' value='0' />
                         <Picker.Item label='1' value='1' />
                         <Picker.Item label='2' value='2' />
                         <Picker.Item label='3' value='3' />
@@ -99,6 +110,36 @@ class DateSearch extends Component {
                         accessibilityLabel='Tap me to search for available tours to reserve'
                     />
                 </View>
+                <Modal
+                    animationType={'slide'}
+                    transparent={false}
+                    visible={this.state.showModal}
+                    onRequestClose={() => this.toggleModal()}
+                >
+                    <View style={styles.modal} >
+                        <Text style={styles.modalTitle}>Search Available Tour Dates</Text>
+                        <Text style={styles.modalText}>
+                            Number of Adults: {this.state.adults}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Number of Children: {this.state.children}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Interested in Camping?: {this.state.hikeIn ? 'Yes' : 'No'}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Date: {this.state.date.toLocaleDateString('en-US')}
+                        </Text>
+                        <Button
+                            onPress={() =>{
+                                this.toggleModal();
+                                this.resetForm();
+                            }}
+                            color='#c8cbae'
+                            title='Close'
+                        />
+                    </View>
+                </Modal>
             </ScrollView>
         )
     }
@@ -118,6 +159,21 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
+    },
+    modal: { 
+        justifyContent: 'center',
+        margin: 20
+    },
+    modalTitle: {
+        fontSize: 24,
+        backgroundColor: '#c8cbae',
+        textAlign: 'center',
+        color: 'black',
+        marginBottom: 20
+    },
+    modalText: {
+        fontSize: 18,
+        margin: 10
     }
 });
 
