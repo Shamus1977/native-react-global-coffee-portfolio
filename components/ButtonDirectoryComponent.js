@@ -25,7 +25,7 @@ function ButtonDirectory(props) {
     
     const renderDirectoryItem = ({item}) => {
         return (
-            <View style={styles.backGroundView}>
+            <View >
                 <View style={styles.outerView}>
                     <View style={styles.innerView}>
                         <ListItem

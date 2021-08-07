@@ -10,9 +10,9 @@ class Home extends Component {
     render() {
         const { navigate} = this.props.navigation;
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: '#239945'}}>
                 <Pressable
-                    onPress={() => navigate('HistoryDirectory')}
+                    onPress={() => navigate('HistoryGeographyDirectory')}
                 >
                     <View style={styles.outerView}>
                         <View style={styles.innerView}>
@@ -22,14 +22,14 @@ class Home extends Component {
                         </View>
                     </View>
                 </Pressable>
-                <View style={styles.outerView}>
+                <View style={[styles.outerView,{paddingBottom:.5}]}>
                     <View style={styles.innerView}>
                         <Text style={styles.region}>Regions:</Text>
                         <Text style={[styles.subInfoTop,{paddingStart:20}]}>Tours &</Text>
                         <Text style={[styles.subInfoBottom, {paddingStart:15}]}>Charities</Text>
                     </View>
                 </View>
-                <View style={styles.outerView}>
+                <View style={[styles.outerView,{paddingBottom:.5}]}>
                     <View style={styles.innerViewLarge}>
                         <Text style={styles.largeText}>Coffee</Text>
                     </View>

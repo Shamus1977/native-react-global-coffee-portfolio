@@ -73,7 +73,7 @@ const HomeNavigator = createStackNavigator(
                 />
             })
         },
-        HistoryGeographyDirectory: {screen: HistoryGeographyDirectory}
+        
 
     },
     {
@@ -205,11 +205,6 @@ const CustomDrawerContainerComponent = (props) => {
                 style={styles.container}
                 forceInset={{top: 'always', horizontal: 'never'}}
             >
-                <View style={styles.drawerHeader}>
-                    <View style={{flex:1}}>
-                        <Text style={styles.drawerHeaderText}>Global Coffee Portal</Text>
-                    </View>
-                </View>
                 <DrawerItems {...props} />
             </SafeAreaView>
         </ScrollView>
@@ -311,7 +306,10 @@ const MainNavigator = createDrawerNavigator(
         contentOptions: {
             activeTintColor: '#fff',
             activeBackgroundColor: 'rgba(0,0,0,.8)',
-            labelStyle:{fontSize:24}
+            labelStyle:{
+                fontSize:24, 
+                fontWeight:'normal', 
+                marginLeft:0}
         },
         contentComponent: CustomDrawerContainerComponent
     },
@@ -335,11 +333,13 @@ class Main extends Component {
             <View
                 style={{
                     flex: 1,
-                    paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
+                    paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
                 }}
             >
-                <Text>The Global Coffee Portal</Text>
-                <AppNavigator />
+                    <View style={styles.mainHeader}>
+                        <Text style={styles.mainHeaderText}>Global Coffee Portal</Text>
+                    </View>
+                    <AppNavigator />
             </View>
         )
     }
@@ -355,12 +355,25 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: 'green',
+        backgroundColor: '#239945',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
         flexDirection: 'row'
+    },
+    mainHeader: {
+        backgroundColor: '#239945',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        height:75,
+    },
+    mainHeaderText: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign:'center',
     },
     drawerHeaderText: {
         color: '#fff',

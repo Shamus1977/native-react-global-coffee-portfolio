@@ -24,7 +24,7 @@ const mapDispatchToProps =  {
 function RenderRegionDetail({region, favorite, markFavorite, onShowModal, comments}) {
     if (region) {
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor:'#239945'}}>
                 <Card 
                     featuredTitle={region.name}
                     image={require('../assets/images/coffee-beans-on-board.jpg')}

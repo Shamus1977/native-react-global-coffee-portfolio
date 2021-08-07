@@ -39,6 +39,7 @@ class HistoryGeographyDirectory extends Component{
         }
 
         return (
+            <View style={{backgroundColor: '#239945'}}>
             <ButtonDirectory
                 regions={this.props.regions.regionsHistory}
                 buttonRight='Geography'
@@ -47,6 +48,7 @@ class HistoryGeographyDirectory extends Component{
                 pressButtonRight='GeographyDirectory'
                 navigate={navigate}
             />
+            </View>
         )
     }
 }
