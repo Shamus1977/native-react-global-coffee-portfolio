@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, View, StyleSheet, Text, ScrollView, Image } from 'react-native';
+import { Platform, View, StyleSheet, Text, ScrollView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
@@ -8,19 +8,25 @@ import  SafeAreaView  from 'react-native-safe-area-view';
 import  Constants  from 'expo-constants';
 import { connect } from 'react-redux';
 import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
-            fetchTours } from '../redux/ActionCreators';
+            fetchTours, fetchRegions, fetchRegionsGeography } from '../redux/ActionCreators';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
 import HistoryDirectory from './HistoryDirectoryComponent';
+import ColombiaHistoryDirectory from './ColombiaHistoryDirectory';
+import ColombiaGeographyDirectory from './ColombiaGeographyDirectory';
 import RegionDetail from './regionDetailComponent';
+import HistoryDetail from './HistoryDetailComponent';
+import GeographyDetail from './GeographyDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
 import DateSearch from './DateSearchComponent';
 import Favorites from './Favorites';
 
 const mapDispatchToProps = {
+    fetchRegions,
     fetchRegionsHistory,
+    fetchRegionsGeography,
     fetchRegionsComments,
     fetchCharities,
     fetchTours
@@ -40,11 +46,10 @@ const HistoryDirectoryNavigator = createStackNavigator(
                 />
             })
         },
-        HistoryDirectory: {screen: HistoryDirectory},
-        RegionDetail: {screen: RegionDetail,
-        },
-        GeographyDirectory: {screen: GeographyDirectory
-        },
+        ColombiaHistoryDirectory: {screen: ColombiaHistoryDirectory},
+        HistoryDetail: {screen: HistoryDetail},
+        ColombiaGeographyDirectory: {screen: ColombiaGeographyDirectory},
+        GeographyDetail: { screen: GeographyDetail},
         
     },
     {
@@ -88,6 +93,8 @@ const HomeNavigator = createStackNavigator(
         }
     }
 );
+
+
 
 const AboutNavigator = createStackNavigator(
     {
@@ -322,7 +329,9 @@ const AppNavigator = createAppContainer(MainNavigator);
 class Main extends Component {
 
     componentDidMount(){
+        this.props.fetchRegions();
         this.props.fetchRegionsHistory();
+        this.props.fetchRegionsGeography();
         this.props.fetchRegionsComments();
         this.props.fetchCharities();
         this.props.fetchTours();

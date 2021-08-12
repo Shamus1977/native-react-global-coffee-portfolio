@@ -8,7 +8,7 @@ import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
-        regions: state.regionsHistory
+        regions: state.regions
     };
 }
 
@@ -41,7 +41,7 @@ class HistoryGeographyDirectory extends Component{
         return (
             <View style={{backgroundColor: '#239945'}}>
             <ButtonDirectory
-                regions={this.props.regions.regionsHistory}
+                regions={this.props.regions.regions}
                 buttonRight='Geography'
                 buttonLeft='History'
                 pressButtonLeft='HistoryDirectory'

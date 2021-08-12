@@ -6,6 +6,8 @@ function Directory(props) {
 
     const navigate = props.navigate;
 
+    const directTo = props.directTo;
+
     const renderDirectoryItem = ({item}) => {
         return (
             <View style={styles.backGroundView}>
@@ -16,7 +18,7 @@ function Directory(props) {
                             title={item.name + ':'}
                             subtitleStyle={styles.listItemSubtitle}
                             subtitle={item.description}
-                            onPress={() => navigate('RegionDetail', { regionId: item.id })}
+                            onPress={() => navigate( directTo, { regionId: item.id })}
                             containerStyle={styles.containerStyle}
                         />
                     </View>

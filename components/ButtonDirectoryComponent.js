@@ -24,6 +24,8 @@ function ButtonDirectory(props) {
     const navigate = props.navigate;
     
     const renderDirectoryItem = ({item}) => {
+        const directLeft = item.name + item.pressButtonLeft;
+        const directRight = item.name + item.pressButtonRight;
         return (
             <View >
                 <View style={styles.outerView}>
@@ -36,13 +38,13 @@ function ButtonDirectory(props) {
                         <View style={styles.buttonsBoxView}>
                             <Pressable
                                 style={styles.pressableStyle}
-                                onPress={() => navigate(item.pressButtonLeft)}
+                                onPress={() => navigate(directLeft)}
                             >
                                 <Text style={{fontSize:20,fontFamily:'sans-serif', letterSpacing:1.8}}>{item.buttonLeft}</Text>
                             </Pressable>
                             <Pressable
                                 style={styles.pressableStyle}
-                                onPress={() => navigate(item.pressButtonRight)}
+                                onPress={() => navigate(directRight)}
                             >
                                 <Text style={{fontSize:20, fontFamily:'sans-serif', letterSpacing:1.8,}}>{item.buttonRight}</Text>
                             </Pressable>

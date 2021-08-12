@@ -1,8 +1,36 @@
 import * as ActionTypes from './ActionTypes';
+import { REGIONS } from '../shared/regions';
 import { REGIONS_HISTORY } from '../shared/regionsHistory';
 import { REGIONS_COMMENTS } from '../shared/regionsComments';
 import { CHARITIES } from '../shared/charities';
-import { TOURS } from '../shared/tours'
+import { TOURS } from '../shared/tours';
+import { REGIONS_GEOGRAPHY } from '../shared/regionsGeography';
+
+
+/***************************************  REGIONS ACTIONS ***********************************/
+/****************************************************************************************** */
+export const fetchRegions = () => dispatch => {
+
+    dispatch(regionsLoading(REGIONS));
+
+    setTimeout(() => {
+        dispatch(addRegions(REGIONS));
+    }, 1000);
+};
+
+export const regionsLoading = () => ({
+    type: ActionTypes.REGIONS_LOADING
+});
+
+export const regionsFailed = errMess => ({
+    type: ActionTypes.REGIONS_FAILED,
+    payload: errMess
+});
+
+export const addRegions = regions => ({
+    type: ActionTypes.ADD_REGIONS,
+    payload: regions
+});
 
 
 
@@ -63,7 +91,7 @@ export const fetchRegionsHistory = () => dispatch => {
 
     setTimeout(() => {
         dispatch(addRegionsHistory(REGIONS_HISTORY));
-    }, 10000);
+    }, 1000);
 };
 
 export const regionsHistoryLoading = () => ({
@@ -81,6 +109,35 @@ export const addRegionsHistory = regionsHistory => ({
 });
 
 
+/***************************************  REGIONS GEOGRAPHY ACTIONS ***********************************/
+/****************************************************************************************** */
+
+
+
+export const fetchRegionsGeography = () => dispatch => {
+
+    dispatch(regionsGeographyLoading(REGIONS_GEOGRAPHY));
+
+    setTimeout(() => {
+        dispatch(addRegionsGeography(REGIONS_GEOGRAPHY));
+    }, 1000);
+};
+
+export const regionsGeographyLoading = () => ({
+    type: ActionTypes.REGIONS_GEOGRAPHY_LOADING
+});
+
+export const regionsGeographyFailed = errMess => ({
+    type: ActionTypes.REGIONS_GEOGRAPHY_FAILED,
+    payload: errMess
+});
+
+export const addRegionsGeography = regionsGeography => ({
+    type: ActionTypes.ADD_REGIONS_GEOGRAPHY,
+    payload: regionsGeography
+});
+
+
 /***************************************  CHARITIES ACTIONS ***********************************/
 /**********************************************************************************************/
 
@@ -92,7 +149,7 @@ export const fetchCharities = () => dispatch => {
 
     setTimeout(() => {
         dispatch(addCharities(CHARITIES));
-    }, 10000);
+    }, 1000);
 };
 
 export const charitiesLoading = () => ({
@@ -121,7 +178,7 @@ export const fetchTours = () => dispatch => {
 
     setTimeout(() => {
         dispatch(addTours(TOURS));
-    }, 10000);
+    }, 1000);
 };
 
 export const toursLoading = () => ({
