@@ -18,7 +18,7 @@ function Directory(props) {
                             title={item.name + ':'}
                             subtitleStyle={styles.listItemSubtitle}
                             subtitle={item.description}
-                            onPress={() => navigate( directTo, { regionId: item.id })}
+                            onPress={() => navigate( directTo, { targetId: item.id })}
                             containerStyle={styles.containerStyle}
                         />
                     </View>

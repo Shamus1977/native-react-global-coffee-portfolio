@@ -42,10 +42,10 @@ class CharityTourDirectory extends Component{
             <View style={{backgroundColor: '#239945'}}>
             <ButtonDirectory
                 regions={this.props.regions.regions}
-                buttonRight='Geography'
-                buttonLeft='History'
-                pressButtonLeft='HistoryDirectory'
-                pressButtonRight='GeographyDirectory'
+                buttonLeft='Charities'
+                buttonRight='Tours'
+                pressButtonLeft='CharityDirectory'
+                pressButtonRight='TourDirectory'
                 navigate={navigate}
             />
             </View>

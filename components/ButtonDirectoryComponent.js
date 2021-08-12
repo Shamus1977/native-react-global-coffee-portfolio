@@ -24,8 +24,8 @@ function ButtonDirectory(props) {
     const navigate = props.navigate;
     
     const renderDirectoryItem = ({item}) => {
-        const directLeft = item.name + item.pressButtonLeft;
-        const directRight = item.name + item.pressButtonRight;
+        const directLeft = item.region + item.pressButtonLeft;
+        const directRight = item.region + item.pressButtonRight;
         return (
             <View >
                 <View style={styles.outerView}>

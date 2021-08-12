@@ -4,20 +4,39 @@ export const CHARITIES = [
         name: "Common Grounds",
         image: "/assets/images/coffee-farmer.jpg",
         featured: true,
-        description: "Helping impoverished coffee producing communities around the globe."
+        description: "Helping impoverished coffee producing communities around the globe.",
+        region: "Colombia",
+        content: "www@CommonGrounds.not",
+        details: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus nulla sint nemo expedita est, et amet explicabo provident cum deserunt, obcaecati dolores quaerat, odio perspiciatis aspernatur id optio laboriosam quas qui ea. Architecto est sed sit obcaecati, dolor voluptate quia harum nihil voluptates totam. Hic necessitatibus illo exercitationem quam eveniet?",
     },
     {
         id: 1,
         name: "Jolly Beans",
         image: "/assets/images/lady-picks-coffee.jpg",
         featured: true,
-        description: "Helping Beans Be Happy!"
+        description: "Helping Beans Be Happy!",
+        region: "Colombia",
+        content: "www@JollyBeans.not",
+        details: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus nulla sint nemo expedita est, et amet explicabo provident cum deserunt, obcaecati dolores quaerat, odio perspiciatis aspernatur id optio laboriosam quas qui ea. Architecto est sed sit obcaecati, dolor voluptate quia harum nihil voluptates totam. Hic necessitatibus illo exercitationem quam eveniet?",
     },
     {
         id: 2,
-        name: "Common Grounds",
+        name: "Expresso Express",
         image: "/assets/images/colombia.jpg",
         featured: true,
-        description: "Helping to get supplies for children."
+        description: "Helping to get supplies for children.",
+        region: "Colombia",
+        content: "www@EE.not",
+        details: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus nulla sint nemo expedita est, et amet explicabo provident cum deserunt, obcaecati dolores quaerat, odio perspiciatis aspernatur id optio laboriosam quas qui ea. Architecto est sed sit obcaecati, dolor voluptate quia harum nihil voluptates totam. Hic necessitatibus illo exercitationem quam eveniet?",
+    },
+    {
+        id: 3,
+        name: "Happy Fields",
+        image: "/assets/images/colombia.jpg",
+        featured: true,
+        description: "Helping to get supplies for children.",
+        region: "Colombia",
+        content: "www@HappyFields.not",
+        details: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus nulla sint nemo expedita est, et amet explicabo provident cum deserunt, obcaecati dolores quaerat, odio perspiciatis aspernatur id optio laboriosam quas qui ea. Architecto est sed sit obcaecati, dolor voluptate quia harum nihil voluptates totam. Hic necessitatibus illo exercitationem quam eveniet?",
     },
 ]

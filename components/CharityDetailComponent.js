@@ -8,26 +8,29 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-        regions: state.regionsHistory
+        charities: state.charities
     }
 }
 
 
 
-function RenderHistoryDetail({region}) {
-    if (region) {
+function RenderCharityDetail({charity}) {
+    if (charity) {
         return (
             <ScrollView style={{backgroundColor:'#239945'}}>
                 <Card 
-                    featuredTitle={region.name}
-                    featuredTitleStyle={{fontSize: 55}}
-                    image={require('../assets/images/coffee-beans-on-board.jpg')}
+                    featuredTitle={charity.name}
+                    featuredTitleStyle={{fontSize: 40, textAlign: 'center'}}
+                    image={require('../assets/images/lady-picks-coffee.jpg')}
                 >
                     <Text style={{margin: 10, fontSize: 28, textAlign:'center'}}>
-                        {region.description}
+                        {charity.description}
                     </Text>
                     <Text style={{margin: 20, fontSize: 20, textAlign:'center'}} >
-                        {region.content}
+                        {charity.content}
+                    </Text>
+                    <Text style={{margin: 20, fontSize: 20, textAlign:'center'}} >
+                        {charity.details}
                     </Text>
                 </Card>
             </ScrollView>
@@ -38,20 +41,20 @@ function RenderHistoryDetail({region}) {
 
 
 
-class HistoryDetail extends Component  {
+class CharityDetail extends Component  {
 
 
     static navigationOptions = {
-        title: 'Region History'
+        title: 'Region Charity'
     }
 
     render(){
         const targetId = this.props.navigation.getParam('targetId');
-        const region = this.props.regions.regionsHistory.filter(region => region.id === targetId)[0];
+        const charity = this.props.charities.charities.filter(charity => charity.id === targetId)[0];
         return (
             <ScrollView>
-                <RenderHistoryDetail 
-                    region={region}
+                <RenderCharityDetail 
+                    charity={charity}
                 />
             </ScrollView>
         );
@@ -68,4 +71,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps)(HistoryDetail);
+export default connect(mapStateToProps)(CharityDetail);

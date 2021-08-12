@@ -46,8 +46,8 @@ class GeographyDetail extends Component  {
     }
 
     render(){
-        const regionId = this.props.navigation.getParam('regionId');
-        const region = this.props.regions.regionsGeography.filter(region => region.id === regionId)[0];
+        const targetId = this.props.navigation.getParam('targetId');
+        const region = this.props.regions.regionsGeography.filter(region => region.id === targetId)[0];
         return (
             <ScrollView>
                 <RenderGeographyDetail 

@@ -22,13 +22,17 @@ class Home extends Component {
                         </View>
                     </View>
                 </Pressable>
-                <View style={[styles.outerView,{paddingBottom:.5}]}>
-                    <View style={styles.innerView}>
-                        <Text style={styles.region}>Regions:</Text>
-                        <Text style={[styles.subInfoTop,{paddingStart:20}]}>Tours &</Text>
-                        <Text style={[styles.subInfoBottom, {paddingStart:15}]}>Charities</Text>
+                <Pressable
+                    onPress={() => navigate('CharityTourDirectory')}
+                >
+                    <View style={[styles.outerView,{paddingBottom:.5}]}>
+                        <View style={styles.innerView}>
+                            <Text style={styles.region}>Regions:</Text>
+                            <Text style={[styles.subInfoTop,{paddingStart:20}]}>Tours &</Text>
+                            <Text style={[styles.subInfoBottom, {paddingStart:15}]}>Charities</Text>
+                        </View>
                     </View>
-                </View>
+                </Pressable>
                 <View style={[styles.outerView,{paddingBottom:.5}]}>
                     <View style={styles.innerViewLarge}>
                         <Text style={styles.largeText}>Coffee</Text>

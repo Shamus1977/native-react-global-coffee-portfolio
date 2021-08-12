@@ -8,26 +8,26 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-        regions: state.regionsHistory
+        tours: state.tours
     }
 }
 
 
 
-function RenderHistoryDetail({region}) {
-    if (region) {
+function RenderTourDetail({tour}) {
+    if (tour) {
         return (
             <ScrollView style={{backgroundColor:'#239945'}}>
                 <Card 
-                    featuredTitle={region.name}
-                    featuredTitleStyle={{fontSize: 55}}
-                    image={require('../assets/images/coffee-beans-on-board.jpg')}
+                    featuredTitle={tour.name}
+                    featuredTitleStyle={{fontSize: 40, textAlign: 'center'}}
+                    image={require('../assets/images/lady-picks-coffee.jpg')}
                 >
                     <Text style={{margin: 10, fontSize: 28, textAlign:'center'}}>
-                        {region.description}
+                        {tour.description}
                     </Text>
                     <Text style={{margin: 20, fontSize: 20, textAlign:'center'}} >
-                        {region.content}
+                        {tour.details}
                     </Text>
                 </Card>
             </ScrollView>
@@ -38,20 +38,20 @@ function RenderHistoryDetail({region}) {
 
 
 
-class HistoryDetail extends Component  {
+class TourDetail extends Component  {
 
 
     static navigationOptions = {
-        title: 'Region History'
+        title: 'Regional Tour'
     }
 
     render(){
         const targetId = this.props.navigation.getParam('targetId');
-        const region = this.props.regions.regionsHistory.filter(region => region.id === targetId)[0];
+        const tour = this.props.tours.tours.filter(tour => tour.id === targetId)[0];
         return (
             <ScrollView>
-                <RenderHistoryDetail 
-                    region={region}
+                <RenderTourDetail 
+                    tour={tour}
                 />
             </ScrollView>
         );
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps)(HistoryDetail);
+export default connect(mapStateToProps)(TourDetail);

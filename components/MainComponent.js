@@ -23,6 +23,10 @@ import GeographyDirectory from './GeographyDirectoryComponent';
 import DateSearch from './DateSearchComponent';
 import Favorites from './Favorites';
 import CharityTourDirectory from './CharityTourDirectoryComponent';
+import ColombiaCharityDirectory from './ColombiaCharityDirectory';
+import ColombiaTourDirectory from './ColombiaTourDirectory';
+import CharityDetail from './CharityDetailComponent';
+import TourDetail from './TourDetailComponent';
 
 const mapDispatchToProps = {
     fetchRegions,
@@ -80,10 +84,10 @@ const CharityDirectoryNavigator = createStackNavigator(
                 />
             })
         },
-        ColombiaHistoryDirectory: {screen: ColombiaHistoryDirectory},
-        HistoryDetail: {screen: HistoryDetail},
-        ColombiaGeographyDirectory: {screen: ColombiaGeographyDirectory},
-        GeographyDetail: { screen: GeographyDetail},
+        ColombiaCharityDirectory: {screen: ColombiaCharityDirectory},
+        CharityDetail: {screen: CharityDetail},
+        ColombiaTourDirectory: {screen: ColombiaTourDirectory},
+        TourDetail: { screen: TourDetail},
         
     },
     {

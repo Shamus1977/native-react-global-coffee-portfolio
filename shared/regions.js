@@ -6,6 +6,7 @@ export const REGIONS = [
         elevation: 1233,
         featured: false,
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, voluptate optio.  ",
+        region: "Colombia",
     },
     {
         id: 1,
@@ -14,6 +15,7 @@ export const REGIONS = [
         elevation: 877,
         featured: false,
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, voluptate opti ",
+        region: "Ethiopia",
     },
     {
         id: 2,
@@ -22,6 +24,7 @@ export const REGIONS = [
         elevation: 2901,
         featured: false,
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, voluptate optio.",
+        region: "Kenya",
     },
     {
         id: 3,
@@ -30,6 +33,7 @@ export const REGIONS = [
         elevation: 42,
         featured: true,
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, voluptate optio.",
+        region: "Costa Rica",
     },
     {
         id: 4,
