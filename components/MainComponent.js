@@ -22,6 +22,7 @@ import GeographyDetail from './GeographyDetailComponent';
 import GeographyDirectory from './GeographyDirectoryComponent';
 import DateSearch from './DateSearchComponent';
 import Favorites from './Favorites';
+import CharityTourDirectory from './CharityTourDirectoryComponent';
 
 const mapDispatchToProps = {
     fetchRegions,
@@ -54,6 +55,39 @@ const HistoryDirectoryNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'HistoryGeographyDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+);
+
+const CharityDirectoryNavigator = createStackNavigator(
+    {
+        CharityTourDirectory: {
+            screen: CharityTourDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon 
+                    name='list'
+                    type='font-awesome'
+                    iconStyle={styles.iconStyle}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        },
+        ColombiaHistoryDirectory: {screen: ColombiaHistoryDirectory},
+        HistoryDetail: {screen: HistoryDetail},
+        ColombiaGeographyDirectory: {screen: ColombiaGeographyDirectory},
+        GeographyDetail: { screen: GeographyDetail},
+        
+    },
+    {
+        initialRouteName: 'CharityTourDirectory',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#c8cbae'
@@ -251,6 +285,18 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='globe'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Charity: { screen: CharityDirectoryNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='book'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
