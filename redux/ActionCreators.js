@@ -5,6 +5,7 @@ import { REGIONS_COMMENTS } from '../shared/regionsComments';
 import { CHARITIES } from '../shared/charities';
 import { TOURS } from '../shared/tours';
 import { REGIONS_GEOGRAPHY } from '../shared/regionsGeography';
+import { CART_ITEMS } from '../shared/cartItems';
 
 
 /***************************************  REGIONS ACTIONS ***********************************/
@@ -211,3 +212,58 @@ const addFavorite = regionId => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: regionId
 })
+
+
+
+/***************************************  CART ITEMS ACTIONS ***************************************/
+/**********************************************************************************************/
+
+
+
+export const fetchCartItems = () => dispatch => {
+
+    dispatch(cartItemsLoading());
+
+    setTimeout(() => {
+        dispatch(addCartItems(CART_ITEMS));
+    }, 1000);
+};
+
+export const cartItemsLoading = () => ({
+    type: ActionTypes.CART_ITEMS_LOADING
+});
+
+export const cartItemsFailed = errMess => ({
+    type: ActionTypes.CART_ITEMS_FAILED,
+    payload: errMess
+});
+
+export const addCartItems = cartItems => ({
+    type: ActionTypes.ADD_CART_ITEMS,
+    payload: cartItems
+});
+
+
+
+export const postToCart =( productNumber, price, itemCount, name, donation, weight) => dispatch => {
+    const newItem = {
+        productNumber,
+        name,
+        price,
+        itemCount,
+        donation,
+        weight
+    }
+    setTimeout( () => {
+        dispatch(addToCart(newItem));
+    },
+    2000);
+};
+
+export const addToCart = item => (
+    {
+        type: ActionTypes.ADD_TO_CART,
+        payload: item
+    }
+);
+

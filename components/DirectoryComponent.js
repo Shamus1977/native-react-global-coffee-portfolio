@@ -38,7 +38,7 @@ function Directory(props) {
 
 const styles= StyleSheet.create({
     backGroundView:{
-        backgroundColor:'#239945'
+        backgroundColor:'rgba(0,200,100,.8)'
         , flex:1
     },
     outerView:{

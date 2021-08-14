@@ -8,6 +8,7 @@ import { charitiesReducer } from './charitiesReducer';
 import { toursReducer } from './toursReducer';
 import { favoritesReducer } from './favoritesReducer';
 import { regionsGeographyReducer } from './regionsGeographyReducer';
+import { cartItemReducer } from './cartItemReducer';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -18,7 +19,8 @@ export const ConfigureStore = () => {
             regionsComments: regionsCommentsReducer,
             charities: charitiesReducer,
             tours: toursReducer,
-            favorites: favoritesReducer, 
+            favorites: favoritesReducer,
+            cartItems: cartItemReducer,
         }),
         applyMiddleware(thunk, logger)
     );

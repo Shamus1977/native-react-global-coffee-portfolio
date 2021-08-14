@@ -8,7 +8,7 @@ import  SafeAreaView  from 'react-native-safe-area-view';
 import  Constants  from 'expo-constants';
 import { connect } from 'react-redux';
 import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
-            fetchTours, fetchRegions, fetchRegionsGeography } from '../redux/ActionCreators';
+            fetchTours, fetchRegions, fetchRegionsGeography, fetchCartItems } from '../redux/ActionCreators';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
@@ -27,6 +27,12 @@ import ColombiaCharityDirectory from './ColombiaCharityDirectory';
 import ColombiaTourDirectory from './ColombiaTourDirectory';
 import CharityDetail from './CharityDetailComponent';
 import TourDetail from './TourDetailComponent';
+import Coffees from './CoffeesComponent';
+import ShoppingCart from './ShoppingCartComponent';
+import Payment from './PaymentComponent';
+import ShoppingCartIcon from './ShoppingCartIcon';
+
+
 
 const mapDispatchToProps = {
     fetchRegions,
@@ -34,8 +40,40 @@ const mapDispatchToProps = {
     fetchRegionsGeography,
     fetchRegionsComments,
     fetchCharities,
-    fetchTours
+    fetchTours,
+    fetchCartItems,
 }
+
+const CoffeesNavigator = createStackNavigator(
+    {
+        Coffees: {
+            screen: Coffees,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon 
+                    name='list'
+                    type='font-awesome'
+                    iconStyle={styles.iconStyle}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        },
+        ShoppingCart: {screen: ShoppingCart},
+        Payment: {screen: Payment},
+    },
+    {
+        initialRouteName: 'Coffees',
+        defaultNavigationOptions: {
+            headerRight: (<ShoppingCartIcon/>),
+            headerStyle: {
+                backgroundColor: '#c8cbae'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+);
 
 
 const HistoryDirectoryNavigator = createStackNavigator(
@@ -272,6 +310,18 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
+        Coffees: { screen: CoffeesNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='coffee'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         History: { screen: HistoryDirectoryNavigator,
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
@@ -297,6 +347,18 @@ const MainNavigator = createDrawerNavigator(
             }
         },
         Charity: { screen: CharityDirectoryNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='book'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Tours: { screen: CharityDirectoryNavigator,
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon
@@ -385,6 +447,7 @@ class Main extends Component {
         this.props.fetchRegionsComments();
         this.props.fetchCharities();
         this.props.fetchTours();
+        this.props.fetchCartItems();
     }
 
     render() {
@@ -414,7 +477,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#239945',
+        backgroundColor: 'rgba(0,200,100,.5)',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -422,7 +485,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     mainHeader: {
-        backgroundColor: '#239945',
+        backgroundColor: 'rgba(0,200,100,.8)',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',

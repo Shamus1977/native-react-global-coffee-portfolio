@@ -39,7 +39,7 @@ class HistoryGeographyDirectory extends Component{
         }
 
         return (
-            <View style={{backgroundColor: '#239945'}}>
+            <View style={{backgroundColor: 'rgba(0,200,100,.8)'}}>
             <ButtonDirectory
                 regions={this.props.regions.regions}
                 buttonRight='Geography'

@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         const { navigate} = this.props.navigation;
         return (
-            <ScrollView style={{backgroundColor: '#239945'}}>
+            <ScrollView style={{backgroundColor: 'rgba(0,200,100,.8)'}}>
                 <Pressable
                     onPress={() => navigate('HistoryGeographyDirectory')}
                 >
