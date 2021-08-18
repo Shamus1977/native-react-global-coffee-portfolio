@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 function RenderCharityDetail({charity}) {
     if (charity) {
         return (
-            <ScrollView style={{backgroundColor:'#239945'}}>
+            <ScrollView style={{backgroundColor:'rgba(0,0,0,.8)'}}>
                 <Card 
                     featuredTitle={charity.name}
                     featuredTitleStyle={{fontSize: 40, textAlign: 'center'}}

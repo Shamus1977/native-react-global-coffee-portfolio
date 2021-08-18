@@ -50,7 +50,7 @@ const CoffeesNavigator = createStackNavigator(
             screen: Coffees,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -63,11 +63,12 @@ const CoffeesNavigator = createStackNavigator(
     {
         initialRouteName: 'Coffees',
         defaultNavigationOptions: {
-            headerRight: (<ShoppingCartIcon/>),
+            headerRight: (<ShoppingCartIcon 
+                        />),
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -82,7 +83,7 @@ const HistoryDirectoryNavigator = createStackNavigator(
             screen: HistoryGeographyDirectory,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -99,9 +100,9 @@ const HistoryDirectoryNavigator = createStackNavigator(
         initialRouteName: 'HistoryGeographyDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -115,7 +116,7 @@ const CharityDirectoryNavigator = createStackNavigator(
             screen: CharityTourDirectory,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -132,9 +133,9 @@ const CharityDirectoryNavigator = createStackNavigator(
         initialRouteName: 'CharityTourDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -147,7 +148,7 @@ const HomeNavigator = createStackNavigator(
         Home: { screen: Home,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -160,9 +161,9 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -177,7 +178,7 @@ const AboutNavigator = createStackNavigator(
         About: { screen: About,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -189,9 +190,9 @@ const AboutNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -204,7 +205,7 @@ const DateSearchNavigator = createStackNavigator(
         DateSearch: { screen: DateSearch,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -216,9 +217,9 @@ const DateSearchNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -231,7 +232,7 @@ const FavoritesNavigator = createStackNavigator(
         Favorites: { screen: Favorites,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -243,9 +244,9 @@ const FavoritesNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -258,7 +259,7 @@ const ContactNavigator = createStackNavigator(
         Contact: { screen: Contact,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
-                    name='list'
+                    name='bars'
                     type='font-awesome'
                     iconStyle={styles.iconStyle}
                     onPress={() => navigation.toggleDrawer()}
@@ -270,9 +271,9 @@ const ContactNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#c8cbae'
+                backgroundColor: '#fff'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
             }
@@ -459,7 +460,17 @@ class Main extends Component {
                 }}
             >
                     <View style={styles.mainHeader}>
-                        <Text style={styles.mainHeaderText}>Global Coffee Portal</Text>
+                        <View style={{alignItems:'flex-start', width:'90%', marginBottom:-10}}>
+                            <Text style={styles.mainHeaderSubText}>The</Text>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center'}}>
+                            <Text style={styles.mainHeaderLargeText}>G</Text>
+                            <Text style={styles.mainHeaderSmallText}>LOBAL</Text>
+                            <Text style={styles.mainHeaderLargeText}>C</Text>
+                            <Text style={styles.mainHeaderSmallText}>OFFEE</Text>
+                            <Text style={styles.mainHeaderLargeText}>P</Text>
+                            <Text style={styles.mainHeaderSmallText}>ORTAL</Text>
+                        </View>
                     </View>
                     <AppNavigator />
             </View>
@@ -470,7 +481,7 @@ class Main extends Component {
 const styles = StyleSheet.create({
     iconStyle: {
         marginLeft: 20,
-        color: '#fff',
+        color: 'black',
         fontSize: 30
     },
     container: {
@@ -485,17 +496,29 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     mainHeader: {
-        backgroundColor: 'rgba(0,200,100,.8)',
+        backgroundColor: '#29a94e', /* rgba(0,200,100,.5) */ /* #239945 */
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
-        height:75,
+        height:100,
     },
-    mainHeaderText: {
-        color: '#fff',
-        fontSize: 24,
+    mainHeaderLargeText: {
+        color: '#d4d6bf',  /* #bec8a6 */
+        fontSize: 40,
         fontWeight: 'bold',
         textAlign:'center',
+    },
+    mainHeaderSmallText: {
+        color: '#d4d6bf',  /* #bec8a6 */
+        fontSize: 26,
+        fontWeight: 'bold',
+        textAlign:'center',
+        marginTop:9,
+        marginRight:8,
+    },
+    mainHeaderSubText:{
+        color: '#d4d6bf',  /* #bec8a6 */
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     drawerHeaderText: {
         color: '#fff',

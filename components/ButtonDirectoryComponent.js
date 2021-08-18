@@ -66,16 +66,16 @@ function ButtonDirectory(props) {
 
 const styles= StyleSheet.create({
     backGroundView:{
-        backgroundColor:'#239945'
+        backgroundColor:'rgba(0,0,0,.8)'
         , flex:1
     },
     outerView:{
         marginVertical:20, 
         marginHorizontal:25, 
         borderRadius:25, 
-        borderColor: '#c8cbae', 
+        borderColor: '#d4d6bf', 
         borderWidth: 2, 
-        backgroundColor: '#c8cbae',
+        backgroundColor: '#d4d6bf',
     },
     innerView:{
         height: 115,
@@ -91,7 +91,7 @@ const styles= StyleSheet.create({
     },
     containerStyle:{
         padding:20,
-        backgroundColor: '#c8cbae'
+        backgroundColor: '#d4d6bf'
     },
     buttonsBoxView:{
         marginHorizontal:10, 

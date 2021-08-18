@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {ScrollView, Text, FlatList} from 'react-native';
+import {View, ScrollView, Text, FlatList} from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';
+import Intro from './IntroComponent';
 
 
 const mapStateToProps = state => {
@@ -11,7 +12,7 @@ const mapStateToProps = state => {
     };
 }
 
-const Mission = (props) => {
+const Mission = () => {
     return (
         <Card>
             <Text style={{margin: 10}} >Here we strive to do this really, really, well.</Text>
@@ -65,7 +66,10 @@ class About extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView >
+                <View style={{backgroundColor:'rgba(0,0,0,.8)'}}>
+                    <Intro text='About this app and the developer.' />
+                </View>
                 <Mission />
                 <Card
                     title='Featured Charities'

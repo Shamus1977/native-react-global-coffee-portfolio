@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import { Card, ListItem, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';

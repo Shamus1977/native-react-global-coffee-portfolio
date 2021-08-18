@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal} from 'react-native';
+import Intro from './IntroComponent';
 
 class DateSearch extends Component {
     constructor(props){
@@ -42,6 +43,9 @@ class DateSearch extends Component {
     render(){
         return (
             <ScrollView>
+                <View style={{backgroundColor:'rgba(0,0,0,.8)'}}>
+                    <Intro text='Search featured tours for your preferred date.' />
+                </View>
                 <View style={styles.formRow} >
                     <Text style={styles.formLabel}>Number of Adults</Text>
                     <Picker
@@ -87,7 +91,6 @@ class DateSearch extends Component {
                     <Button 
                         onPress={() => this.setState({showCalander: !this.state.showCalander})}
                         title={this.state.date.toLocaleDateString('en-US')}
-                        color='#c8cbae'
                         accessibilityLabel='Tap me to choose a tour date'
                     />
                 </View>
@@ -106,7 +109,6 @@ class DateSearch extends Component {
                     <Button
                         onPress={() => this.handleReservation()}
                         title='Search'
-                        color='#c8cbae'
                         accessibilityLabel='Tap me to search for available tours to reserve'
                     />
                 </View>
@@ -130,14 +132,15 @@ class DateSearch extends Component {
                         <Text style={styles.modalText}>
                             Date: {this.state.date.toLocaleDateString('en-US')}
                         </Text>
+                        <View style={{margin:40}}>
                         <Button
                             onPress={() =>{
                                 this.toggleModal();
                                 this.resetForm();
                             }}
-                            color='#c8cbae'
                             title='Close'
                         />
+                        </View>
                     </View>
                 </Modal>
             </ScrollView>
@@ -166,7 +169,7 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         fontSize: 24,
-        backgroundColor: '#c8cbae',
+        borderWidth: .5,
         textAlign: 'center',
         color: 'black',
         marginBottom: 20

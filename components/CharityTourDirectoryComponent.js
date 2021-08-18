@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import ButtonDirectory from './ButtonDirectoryComponent';
 import Loading from './LoadingComponent';
+import Intro from './IntroComponent';
 
 
 
@@ -39,16 +40,17 @@ class CharityTourDirectory extends Component{
         }
 
         return (
-            <View style={{backgroundColor: 'rgba(0,200,100,.8)'}}>
-            <ButtonDirectory
-                regions={this.props.regions.regions}
-                buttonLeft='Charities'
-                buttonRight='Tours'
-                pressButtonLeft='CharityDirectory'
-                pressButtonRight='TourDirectory'
-                navigate={navigate}
-            />
-            </View>
+            <ScrollView style={{backgroundColor: 'rgba(0,0,0,.8)'}}>
+                <Intro text='Help them make it through... Donate and/or feed their economy...'/>
+                <ButtonDirectory
+                    regions={this.props.regions.regions}
+                    buttonLeft='Charities'
+                    buttonRight='Tours'
+                    pressButtonLeft='CharityDirectory'
+                    pressButtonRight='TourDirectory'
+                    navigate={navigate}
+                />
+            </ScrollView>
         )
     }
 }

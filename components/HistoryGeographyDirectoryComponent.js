@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import ButtonDirectory from './ButtonDirectoryComponent';
 import Loading from './LoadingComponent';
+import Intro from './IntroComponent';
 
 
 
@@ -39,16 +40,17 @@ class HistoryGeographyDirectory extends Component{
         }
 
         return (
-            <View style={{backgroundColor: 'rgba(0,200,100,.8)'}}>
-            <ButtonDirectory
-                regions={this.props.regions.regions}
-                buttonRight='Geography'
-                buttonLeft='History'
-                pressButtonLeft='HistoryDirectory'
-                pressButtonRight='GeographyDirectory'
-                navigate={navigate}
-            />
-            </View>
+            <ScrollView style={{backgroundColor: 'rgba(0,0,0,.8)'}}>
+                <Intro text="Smell the coffee, know the people!" />
+                <ButtonDirectory
+                    regions={this.props.regions.regions}
+                    buttonRight='Geography'
+                    buttonLeft='History'
+                    pressButtonLeft='HistoryDirectory'
+                    pressButtonRight='GeographyDirectory'
+                    navigate={navigate}
+                />
+            </ScrollView>
         )
     }
 }

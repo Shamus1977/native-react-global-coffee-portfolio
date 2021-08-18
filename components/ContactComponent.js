@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text} from 'react-native';
 import { Card } from 'react-native-elements';
+import Intro from './IntroComponent';
 
 class Contact extends Component {
 
@@ -11,6 +12,9 @@ class Contact extends Component {
     render () {
         return (
             <ScrollView>
+                <View style={{backgroundColor:'rgba(0,0,0,.8)'}}>
+                    <Intro text='Let us know what you think!' />
+                </View>
                 <Card
                     title='Contact Us'
                     wrapperStyle={{margin: 20}}

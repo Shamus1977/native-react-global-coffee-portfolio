@@ -3,6 +3,7 @@ import { FlatList, View, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import  Loading  from './LoadingComponent';
+import Intro from './IntroComponent';
 
 const mapStateToProps = state => {
     return {
@@ -42,13 +43,18 @@ class Favorites extends Component {
         }
 
         return (
-            <FlatList
-                data={this.props.regions.regionsHistory.filter(
-                    region => this.props.favorites.includes(region.id)
-                )}
-                renderItem={renderFavoriteItem}
-                keyExtractor={item => item.id.toString()}
-            />
+            <View>
+                <View style={{backgroundColor:'rgba(0,0,0,.8)'}}>
+                    <Intro text='Your selected favorites:' />
+                </View>
+                <FlatList
+                    data={this.props.regions.regionsHistory.filter(
+                        region => this.props.favorites.includes(region.id)
+                    )}
+                    renderItem={renderFavoriteItem}
+                    keyExtractor={item => item.id.toString()}
+                />
+            </View>
         );
     }
 }

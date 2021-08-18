@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, StyleSheet, Pressable } from 'react-native';
+import Intro from './IntroComponent';
 
 class Home extends Component {
 
@@ -10,15 +11,14 @@ class Home extends Component {
     render() {
         const { navigate} = this.props.navigation;
         return (
-            <ScrollView style={{backgroundColor: 'rgba(0,200,100,.8)'}}>
+            <ScrollView style={{backgroundColor: 'rgba(0,0,0,.8)'}}>
+                <Intro text='A pound of Coffee, a ton of humanity.' />
                 <Pressable
-                    onPress={() => navigate('HistoryGeographyDirectory')}
+                    onPress={() => navigate('Coffees')}
                 >
-                    <View style={styles.outerView}>
-                        <View style={styles.innerView}>
-                            <Text style={styles.region}>Regions:</Text>
-                            <Text style={styles.subInfoTop}>History &</Text>
-                            <Text style={styles.subInfoBottom}>Geography</Text>
+                    <View style={[styles.outerView,{paddingBottom:.5}]}>
+                        <View style={styles.innerViewLarge}>
+                            <Text style={styles.largeText}>Coffee</Text>
                         </View>
                     </View>
                 </Pressable>
@@ -33,11 +33,17 @@ class Home extends Component {
                         </View>
                     </View>
                 </Pressable>
-                <View style={[styles.outerView,{paddingBottom:.5}]}>
-                    <View style={styles.innerViewLarge}>
-                        <Text style={styles.largeText}>Coffee</Text>
+                <Pressable
+                    onPress={() => navigate('HistoryGeographyDirectory')}
+                >
+                    <View style={styles.outerView}>
+                        <View style={styles.innerView}>
+                            <Text style={styles.region}>Regions:</Text>
+                            <Text style={styles.subInfoTop}>History &</Text>
+                            <Text style={styles.subInfoBottom}>Geography</Text>
+                        </View>
                     </View>
-                </View>
+                </Pressable>
             </ScrollView>
         );
     }
@@ -45,8 +51,8 @@ class Home extends Component {
 
 const styles= StyleSheet.create({
     backGroundView:{
-        backgroundColor:'#239945'
-        , flex:1
+        backgroundColor:'rgba(0,0,0,.8)', 
+        flex:1
     },
     outerView:{
         marginVertical:20, 

@@ -3,6 +3,7 @@ import Directory from './DirectoryComponent';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';
+import Intro from './IntroComponent';
 
 const mapStateToProps = state => {
     return {
@@ -46,7 +47,8 @@ class ColombiaHistoryDirectory extends Component{
         }
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: 'rgba(0,0,0,.8)'}}>
+                <Intro text='Hear their story!' />
                 <Directory
                     regions={region}
                     onPress={regionId => this.onRegionSelect(regionId)}
