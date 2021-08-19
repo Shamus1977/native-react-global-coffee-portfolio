@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import {ScrollView, Text, FlatList, View, TextInput, Modal, StyleSheet} from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements';
+import {ScrollView, Text, FlatList, View, TextInput, Modal, StyleSheet, Share} from 'react-native';
+import { Card, ListItem, Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postToCart } from '../redux/ActionCreators';
 import { COFFEES } from '../shared/coffees';
@@ -48,6 +48,16 @@ class Products extends Component {
         const price = 'Cost: $' + item.price;
         const weight = 'Weight: ' + item.weight + ' lbs';
         
+        const shareProduct = (title, message, url) => {
+            Share.share({
+                title,
+                massage: `${title}: ${message} ${url}`,
+                url
+            },
+            {
+                dialogTitle:'Share ' + title
+            });
+        }
         
             return (
                 <View style={{borderBottomWidth:1}}>
@@ -78,6 +88,16 @@ class Products extends Component {
                                 {price}
                             </Text>
                         </Card>
+                        <View style={{flexDirection:'row'}}>
+                            <Icon
+                                name='share'
+                                type='font-awesome'
+                                color='blue'
+                                raised
+                                reverse
+                                onPress={() => shareProduct(brand, description, 'This will be the URL')}
+                            />
+                        </View>
                         <View style={{margin:20, flex:2}}>
                             <Button
                                 title='Add To Cart'
