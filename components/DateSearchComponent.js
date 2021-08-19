@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal} from 'react-native';
+import * as Notifications from 'expo-notifications';
 import Intro from './IntroComponent';
 
 class DateSearch extends Component {
@@ -41,6 +42,33 @@ class DateSearch extends Component {
             showModal: false,
         });
     }
+
+    async presentLocalNotifications(date, adults, children){
+        function sendNotification(){
+            Notifications.setNotificationHandler({
+                handleNotification: async () => ({
+                    shouldShowAlert: true
+                })
+            });
+
+            Notifications.scheduleNotificationAsync({
+                content:{
+                    title: 'Your Tour Date Search',
+                    body: `Search for a tour on ${date}, for ${adults} adults \n and ${children} children, is underway`
+                },
+                trigger: null
+            });
+        }
+
+        let permissions = await Notifications.getPermissionsAsync();
+        if(!permissions.granted){
+            permissions = await Notifications.requestPermissionsAsync();
+        }
+        if(permissions.granted){
+            sendNotification()
+        }
+    }
+
 
     render(){
         return (
@@ -155,6 +183,7 @@ class DateSearch extends Component {
                         <Button
                             onPress={() =>{
                                 this.toggleModal();
+                                this.presentLocalNotifications(this.state.date.toLocaleDateString('en-US'), this.state.adults, this.state.children)
                                 this.resetForm();
                             }}
                             title='Close'

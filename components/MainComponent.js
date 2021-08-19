@@ -31,7 +31,7 @@ import Coffees from './CoffeesComponent';
 import ShoppingCart from './ShoppingCartComponent';
 import Payment from './PaymentComponent';
 import ShoppingCartIcon from './ShoppingCartIcon';
-import Login from './LogInComponent';
+import Login from './LoginComponent';
 
 
 
