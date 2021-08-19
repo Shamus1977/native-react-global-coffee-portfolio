@@ -31,6 +31,8 @@ import Coffees from './CoffeesComponent';
 import ShoppingCart from './ShoppingCartComponent';
 import Payment from './PaymentComponent';
 import ShoppingCartIcon from './ShoppingCartIcon';
+import Login from './LogInComponent';
+
 
 
 
@@ -43,6 +45,33 @@ const mapDispatchToProps = {
     fetchTours,
     fetchCartItems,
 }
+
+const LoginNavigator = createStackNavigator(
+    {
+        Login: { screen: Login,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon 
+                    name='bars'
+                    type='font-awesome'
+                    iconStyle={styles.iconStyle}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        }
+
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#fff'
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+)
 
 const CoffeesNavigator = createStackNavigator(
     {
@@ -75,6 +104,7 @@ const CoffeesNavigator = createStackNavigator(
         }
     }
 );
+
 
 
 const HistoryDirectoryNavigator = createStackNavigator(
@@ -299,6 +329,18 @@ const CustomDrawerContainerComponent = (props) => {
 
 const MainNavigator = createDrawerNavigator(
     {
+        Login: { screen: LoginNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='sign-in'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Home: { screen: HomeNavigator,
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
@@ -419,9 +461,10 @@ const MainNavigator = createDrawerNavigator(
                     />
                 )
             },
-        }
+        },
     },
     {
+        initialRouteName:'Home',
         drawerBackgroundColor: '#c8cbae',
         contentOptions: {
             activeTintColor: '#fff',

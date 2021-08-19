@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import {ScrollView, Text, FlatList} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements';
-import { ForceTouchGestureHandler } from 'react-native-gesture-handler';
-import { set } from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';
 

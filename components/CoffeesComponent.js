@@ -6,7 +6,7 @@ import Loading from './LoadingComponent';
 import Products from './ProductsComponent';
 import Intro from './IntroComponent';
 import { COFFEES } from '../shared/coffees';
-import CartButton from './CartButtonComponent';
+
 
 class Coffees extends Component {
     constructor(props){
@@ -24,7 +24,16 @@ class Coffees extends Component {
         const { navigate} = this.props.navigation;
         return (
             <View>
-                <CartButton />
+                <Button
+                title='Go To Cart'
+                titleStyle={{marginLeft:5, color: 'black'}}
+                icon={<Icon
+                    name='shopping-cart'
+                    type='font-awesome'
+                    size={30}
+                />}
+                onPress={ () => navigate('ShoppingCart')}
+            />
                 <ScrollView style={{backgroundColor:'rgba(0,0,0,.8)'}}>
                     <Intro text="The 'Amount given to charity', goes to a charity in the products region of orgin!" />
                     <Products products={this.state.coffees}/>

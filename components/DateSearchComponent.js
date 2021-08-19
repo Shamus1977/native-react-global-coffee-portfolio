@@ -9,6 +9,7 @@ class DateSearch extends Component {
         this.state = {
             adults: 1,
             children: 0,
+            selectedRegion: '',
             campingSpots: false,
             date: new Date(),
             showCalander: false,
@@ -35,6 +36,7 @@ class DateSearch extends Component {
             children: 0,
             campingSpots: false,
             date: new Date(),
+            selectedRegion: '',
             showCalander: false,
             showModal: false,
         });
@@ -78,6 +80,20 @@ class DateSearch extends Component {
                     </Picker>
                 </View>
                 <View style={styles.formRow} >
+                    <Text style={styles.formLabel}>Region</Text>
+                    <Picker
+                        style={styles.formItem}
+                        selectedValue={this.state.selectedRegion}
+                        onValueChange={ value => this.setState({selectedRegion: value})}
+                    >
+                        <Picker.Item label='All' value='all' />
+                        <Picker.Item label='Colombia' value='Colombia' />
+                        <Picker.Item label='Ethiopia' value='Ethiopia' />
+                        <Picker.Item label='Kenya' value='Kenya' />
+                        <Picker.Item label='Costa Rica' value='Costa Rica' />
+                    </Picker>
+                </View>
+                <View style={styles.formRow} >
                     <Text style={styles.formLabel}>Interested in Camping?</Text>
                     <Switch
                         style={styles.formItem}
@@ -105,7 +121,7 @@ class DateSearch extends Component {
                         style={styles.formItem}
                     />
                 )}
-                <View style={styles.formRow} >
+                <View style={[styles.formRow,{marginTop:-5}]} >
                     <Button
                         onPress={() => this.handleReservation()}
                         title='Search'
@@ -125,6 +141,9 @@ class DateSearch extends Component {
                         </Text>
                         <Text style={styles.modalText}>
                             Number of Children: {this.state.children}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Selected Region: {this.state.selectedRegion.length > 1 ? this.state.selectedRegion : 'All'}
                         </Text>
                         <Text style={styles.modalText}>
                             Interested in Camping?: {this.state.hikeIn ? 'Yes' : 'No'}
@@ -154,7 +173,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         flexDirection: 'row',
-        margin: 20
+        margin: 15
     },
     formLabel: {
         fontSize: 18,
