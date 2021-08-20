@@ -9,6 +9,7 @@ import  Constants  from 'expo-constants';
 import { connect } from 'react-redux';
 import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
             fetchTours, fetchRegions, fetchRegionsGeography, fetchCartItems } from '../redux/ActionCreators';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
@@ -32,6 +33,7 @@ import ShoppingCart from './ShoppingCartComponent';
 import Payment from './PaymentComponent';
 import ShoppingCartIcon from './ShoppingCartIcon';
 import Login from './LoginComponent';
+import  Register  from './RegisterComponent';
 
 
 
@@ -46,6 +48,23 @@ const mapDispatchToProps = {
     fetchCartItems,
 }
 
+/*
+const BottomNavigator = createBottomTabNavigator(
+    {
+        Login: Login,
+    },
+    {
+        tabBarOptions:{
+            activeBackgroundColor: 'blue',
+            inactiveBackgroundColor:'#fff',
+            activeTintColor:'yellow',
+            inactiveTintColor:'green',
+            labelStyle:{fontSize:16}
+        }
+    }
+);*/
+
+
 const LoginNavigator = createStackNavigator(
     {
         Login: { screen: Login,
@@ -57,7 +76,8 @@ const LoginNavigator = createStackNavigator(
                     onPress={() => navigation.toggleDrawer()}
                 />
             })
-        }
+        },
+        Register: {screen: Register}
 
     },
     {
@@ -494,6 +514,7 @@ class Main extends Component {
         this.props.fetchCartItems();
     }
 
+
     render() {
         return (
             <View
@@ -520,6 +541,7 @@ class Main extends Component {
         )
     }
 }
+
 
 const styles = StyleSheet.create({
     iconStyle: {

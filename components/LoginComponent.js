@@ -1,7 +1,10 @@
 import React, {Component } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
-import { CheckBox, Input } from 'react-native-elements';
+import { View, StyleSheet, ScrollView, Image, Text } from 'react-native';
+import { CheckBox, Input, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 class Login extends Component {
     constructor(props){
@@ -14,7 +17,14 @@ class Login extends Component {
     }
 
     static navigationOptions = {
-        title: 'Login'
+        title: 'Login',
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name='sign-in'
+                type='font-awesome'
+                iconStyle={{color: tintColor}}
+            />
+        )
     }
 
     handleLogin(){
@@ -41,9 +51,11 @@ class Login extends Component {
             });
     }
 
+
     render(){
+        const { navigate } = this.props.navigation;
         return(
-            <View style={styles.container}>
+            <ScrollView contentContainerStyle={styles.container}>
                 <Input 
                     placeholder='Username'
                     leftIcon={{type:'font-awesome', name:'user'}}
@@ -71,30 +83,57 @@ class Login extends Component {
                     <Button
                         onPress={() => this.handleLogin()}
                         title='Login'
+                        icon={
+                            <Icon 
+                                name='sign-in'
+                                type='font-awesome'
+                                color='#fff'
+                                iconStyle={{marginRight:10}}
+                            />
+                        }
+                        buttonStyle={{backgroundColor:'blue'}}
                     />
                 </View>
-            </View>
+                <View style={[styles.formButton,{marginBottom:30}]}>
+                    <Button
+                        onPress={() => navigate('Register')}
+                        title='Register'
+                        type='clear'
+                        icon={
+                            <Icon 
+                                name='user-plus'
+                                type='font-awesome'
+                                color='blue'
+                                iconStyle={{marginRight:10}}
+                            />
+                        }
+                        titleStyle={{color:'blue'}}
+                    />
+                </View>
+            </ScrollView>
         )
     }
 }
 
+
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        margin: 20
+        margin: 20,
     },
     formIcon: {
         marginRight: 10
     },
     formInput: {
-        padding: 10
+        padding: 5
     },
     formCheckBox: {
-        margin: 10,
+        margin: 5,
         backgroundColor: null
     },
     formButton: {
-        margin: 40
+        marginHorizontal: 40,
+        marginVertical:5
     }
 });
 
