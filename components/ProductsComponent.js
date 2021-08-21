@@ -13,22 +13,42 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    postToCart: (productNumber, price, itemCount, name, donation, weight) => (postToCart(productNumber, price, itemCount, name, donation, weight)),
+    postToCart: (productNumber, price, name, donation, weight) => (postToCart(productNumber, price, name, donation, weight)),
 }
+
+/*
+const addItem = (item, cartItems) =>{
+    let product = item;
+    let name = product.name;
+
+    let getItem = cartItems.filter( index => index.name === name);
+
+    if (getItem.length > 0){
+        itemGot = itemInCart[0];
+        itemGot.itemCount ++;
+        let cartList = cartItems.filter( index => index.name !== name);
+        cartList.push(itemGot);
+
+        postAddItem(cartList);
+    }else{
+        postToCart(product);
+    }
+} */
+
 
 class Products extends Component {
     constructor(props){
         super(props);
         this.state = {
-            cartItems: this.props.cartItems,
-            itemCount: 0, 
+            cartItems: this.props.cartItems, 
         }
     }
-
-    addItem(item) {
-        this.props.postToCart(item.productNumber, item.price, 3, item.name, item.donation, item.weight);
-    }
-
+    
+        addItem(item) {
+            this.props.postToCart(item.productNumber, item.price, item.name, item.donation, item.weight);
+            alert(JSON.stringify(this.props.cartItems));
+        }
+    
     render () {
         const   renderProducts = ({item}) =>{
             const brand = 'Name: ' + item.name;

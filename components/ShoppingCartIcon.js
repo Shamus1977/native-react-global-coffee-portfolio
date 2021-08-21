@@ -10,17 +10,25 @@ const mapStateToProps = state => {
     }
 }
 
+
 const ShoppingCartIcon = (props) => {
+
+    const numberOfItems = props.cartItems.itemCount;/* props.cartItems.cartItems.map( item => {
+        const itemCount = 0;
+        itemCount = itemCount + item.count;
+        return itemCount;
+    })*/
+
     return (
         <View style={{padding: 5}}>
             <View
                 style={styles.cart}
             >
-                <Text style={{fontSize:18, padding: 5}}>{props.cartItems.cartItems.length}</Text>
+                <Text style={{fontSize:18, padding: 5}}>{numberOfItems}</Text>
             </View>
             <Icon
                 name='shopping-cart'
-                type='font-awesom'
+                type='font-awesome'
                 size={30}
                 style={{marginRight:5}}
             />

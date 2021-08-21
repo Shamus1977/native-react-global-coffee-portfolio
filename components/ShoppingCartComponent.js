@@ -34,9 +34,9 @@ class ShoppingCart extends Component {
         title:'Shopping Cart'
     }
     itemCounter = (productNumber) => {
-        const list =  this.props.cartItems.cartItems.filter( item => item.productNumber === productNumber);
-        const count = list.length;
-        return count;
+        const product =  this.props.cartItems.cartItems.filter( item => item.productNumber === productNumber)[0];
+        const productCount =  product.count;
+        return productCount;
     }
 
 
