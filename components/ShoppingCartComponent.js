@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import {ScrollView, Text, FlatList} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { deleteFromCart } from '../redux/ActionCreators';
 import Loading from './LoadingComponent';
 
 
@@ -10,6 +11,10 @@ const mapStateToProps = state => {
     return {
         cartItems: state.cartItems
     };
+}
+
+const mapDispatchToProps = {
+    deleteFromCart: (item) => (deleteFromCart(item)),
 }
 
 const Mission = () => {
@@ -33,17 +38,24 @@ class ShoppingCart extends Component {
     static navigationOptions = {
         title:'Shopping Cart'
     }
+
+
     itemCounter = (productNumber) => {
         const product =  this.props.cartItems.cartItems.filter( item => item.productNumber === productNumber)[0];
         const productCount =  product.count;
         return productCount;
     }
 
+    removeItem(item){
+        alert(JSON.stringify(item));
+        this.props.deleteFromCart(item);
+    }
 
     render () {
 
     const   renderItem = ({item}) =>{
         const count = this.itemCounter(item.productNumber);
+        const name = item.name;
             return (
                 <View style={{borderBottomWidth:1}}>
                     <ListItem 
@@ -56,7 +68,7 @@ class ShoppingCart extends Component {
                     <View style={{margin:20, flex:2}}>
                         <Button 
                             title='Remove Item'
-                            onPress={()=> console.log()}
+                            onPress={ () => this.removeItem(item)}
                         />
                     </View>
                 </View>
@@ -105,4 +117,4 @@ class ShoppingCart extends Component {
     }
 }
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

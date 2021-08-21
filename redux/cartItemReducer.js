@@ -18,11 +18,11 @@ export const cartItemReducer = (state ={
             const name = item.name;
             item.id = state.cartItems.length;
             state.itemCount++;
-            const findItem = state.cartItems.filter(index => index.name === name);
+            const findItem = state.cartItems.filter(index => index.name === action.payload.name);
                 if(findItem.length > 0){
                     const foundItem = findItem[0];
                     foundItem.count ++;
-                    const newCart = state.cartItems.filter(index => index.name !== name);
+                    const newCart = state.cartItems.filter(index => index.name !== action.payload.name);
                     newCart.push(foundItem);
                     return {...state, cartItems: newCart}
                 }else{
@@ -30,8 +30,18 @@ export const cartItemReducer = (state ={
                     return {...state, cartItems: state.cartItems.concat(item)};
                 }
         case ActionTypes.DELETE_FROM_CART:
-            const cart = state.cartItems.filter(item => item.id !== action.payload.id);
+            const findProduct = state.cartItems.filter(index => index.name === action.payload.name);
+            const foundItem = findProduct[0];
+            state.itemCount --;
+            if(foundItem.count > 1){
+                foundItem.count --;
+                const newCart = state.cartItems.filter(index => index.name !== action.payload.name);
+                newCart.push(foundItem);
+                return {...state, cartItems: newCart}
+            }else{
+                const cart = state.cartItems.filter(item => item.name !== action.payload.name);
             return {...state, cartItems: cart};
+            }
         default:
             return state;   
     }

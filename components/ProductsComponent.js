@@ -16,25 +16,6 @@ const mapDispatchToProps = {
     postToCart: (productNumber, price, name, donation, weight) => (postToCart(productNumber, price, name, donation, weight)),
 }
 
-/*
-const addItem = (item, cartItems) =>{
-    let product = item;
-    let name = product.name;
-
-    let getItem = cartItems.filter( index => index.name === name);
-
-    if (getItem.length > 0){
-        itemGot = itemInCart[0];
-        itemGot.itemCount ++;
-        let cartList = cartItems.filter( index => index.name !== name);
-        cartList.push(itemGot);
-
-        postAddItem(cartList);
-    }else{
-        postToCart(product);
-    }
-} */
-
 
 class Products extends Component {
     constructor(props){

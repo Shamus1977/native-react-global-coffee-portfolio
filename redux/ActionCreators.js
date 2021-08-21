@@ -343,3 +343,10 @@ export const addToCart = item => (
     }
 );
 
+export const deleteFromCart = item => (
+    {
+        type: ActionTypes.DELETE_FROM_CART,
+        payload: item
+    }
+)
+
