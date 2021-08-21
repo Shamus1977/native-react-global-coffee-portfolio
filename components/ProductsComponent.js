@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import {ScrollView, Text, FlatList, View} from 'react-native';
-import { Card, ListItem, Button, Icon} from 'react-native-elements';
+import { Card, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postToCart } from '../redux/ActionCreators';
 
@@ -27,7 +27,7 @@ class Products extends Component {
     
         addItem(item) {
             this.props.postToCart(item.id, item.productNumber, item.price, item.name, item.donation, item.weight);
-            alert(JSON.stringify(this.props.cartItems));
+            //alert(JSON.stringify(this.props.cartItems));
         }
     
     render () {

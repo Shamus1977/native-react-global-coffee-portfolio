@@ -38,7 +38,6 @@ export const cartItemReducer = (state ={
             const productTally = state.itemCount -1;
             const totalAmount = state.totalCost - action.payload.price;
             const totalGift = state.totalDonation - action.payload.donation;
-            alert(JSON.stringify(action.payload.price));
             if(foundItem.count > 1){
                 foundItem.count --;
                 const newCart = state.cartItems.filter(index => index.id !== action.payload.id);

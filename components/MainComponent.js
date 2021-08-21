@@ -10,18 +10,14 @@ import { connect } from 'react-redux';
 import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
             fetchTours, fetchRegions, fetchRegionsGeography, fetchCartItems, 
             fetchCoffeesComments, fetchCoffees } from '../redux/ActionCreators';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
 import HistoryGeographyDirectory from './HistoryGeographyDirectoryComponent';
-import HistoryDirectory from './HistoryDirectoryComponent';
 import ColombiaHistoryDirectory from './ColombiaHistoryDirectory';
 import ColombiaGeographyDirectory from './ColombiaGeographyDirectory';
-import RegionDetail from './regionDetailComponent';
 import HistoryDetail from './HistoryDetailComponent';
 import GeographyDetail from './GeographyDetailComponent';
-import GeographyDirectory from './GeographyDirectoryComponent';
 import DateSearch from './DateSearchComponent';
 import Favorites from './Favorites';
 import CharityTourDirectory from './CharityTourDirectoryComponent';
@@ -52,21 +48,6 @@ const mapDispatchToProps = {
     fetchCoffees,
 }
 
-/*
-const BottomNavigator = createBottomTabNavigator(
-    {
-        Login: Login,
-    },
-    {
-        tabBarOptions:{
-            activeBackgroundColor: 'blue',
-            inactiveBackgroundColor:'#fff',
-            activeTintColor:'yellow',
-            inactiveTintColor:'green',
-            labelStyle:{fontSize:16}
-        }
-    }
-);*/
 
 
 const LoginNavigator = createStackNavigator(
@@ -497,7 +478,9 @@ const MainNavigator = createDrawerNavigator(
             labelStyle:{
                 fontSize:24, 
                 fontWeight:'normal', 
-                marginLeft:0}
+                marginLeft:0,
+                marginTop:5,
+            }
         },
         contentComponent: CustomDrawerContainerComponent
     },
@@ -568,19 +551,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     mainHeader: {
-        backgroundColor: '#29a94e', /* rgba(0,200,100,.5) */ /* #239945 */
+        backgroundColor: '#29a94e', 
         alignItems: 'center',
         justifyContent: 'center',
         height:100,
     },
     mainHeaderLargeText: {
-        color: '#d4d6bf',  /* #bec8a6 */
+        color: '#d4d6bf',  
         fontSize: 40,
         fontWeight: 'bold',
         textAlign:'center',
     },
     mainHeaderSmallText: {
-        color: '#d4d6bf',  /* #bec8a6 */
+        color: '#d4d6bf',  
         fontSize: 26,
         fontWeight: 'bold',
         textAlign:'center',
@@ -588,7 +571,7 @@ const styles = StyleSheet.create({
         marginRight:8,
     },
     mainHeaderSubText:{
-        color: '#d4d6bf',  /* #bec8a6 */
+        color: '#d4d6bf',  
         fontSize: 20,
         fontWeight: 'bold',
     },

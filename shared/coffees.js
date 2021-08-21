@@ -9,7 +9,7 @@ export const COFFEES = [
         text:"Picked on the full moon. Freindly people grow this. It's such a treat to have this brew. You're gonna be helping out some great folks!",
         weight: 1,
         price: 12.99,
-        donation: 2,
+        donation: 2.00,
         image: "/assets/images/coffee-farmer.jpg",
     },
     {
@@ -22,7 +22,7 @@ export const COFFEES = [
         text:"They got it right!!. For centuries people have been trying to grow the perfect bean. These folks have won the bean race!",
         weight: 1,
         price: 15.99,
-        donation: 3,
+        donation: 3.00,
         image: "/assets/images/coffee-farmer.jpg",
     },
     {
@@ -35,7 +35,7 @@ export const COFFEES = [
         text:"How does it feel to have a cup straight from the source. I'll tell ya. It's magnificent!. These people care about the land, they care about their work and their family. They grow a mean bean!",
         weight: 1,
         price: 11.99,
-        donation: 2,
+        donation: 2.00,
         image: "/assets/images/coffee-farmer.jpg",
     },
     {
@@ -48,7 +48,7 @@ export const COFFEES = [
         text:"Are there any words to describe true perfection?. If you know of any, maybe you can write the description better than me. Absolutly, 'cat got your tounge', good!",
         weight: 1,
         price: 10.99,
-        donation: 2,
+        donation: 2.00,
         image: "/assets/images/coffee-farmer.jpg",
     },
 ]

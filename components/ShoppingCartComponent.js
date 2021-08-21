@@ -107,8 +107,8 @@ class ShoppingCart extends Component {
         return (
             <ScrollView>
                 <Mission />
-                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Price: ${roundedPrice}`}</Text>
-                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Donation: ${totalDonation}`}</Text>
+                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Price: $${roundedPrice}`}</Text>
+                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Donation: $${totalDonation}`}</Text>
                 <Card
                     title='Shopping cart'
                 >

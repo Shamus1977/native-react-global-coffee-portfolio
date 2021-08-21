@@ -2,9 +2,7 @@ import React, {Component } from 'react';
 import { View, StyleSheet, ScrollView, Image, Text } from 'react-native';
 import { CheckBox, Input, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
-import * as ImagePicker from 'expo-image-picker';
-import * as Permissions from 'expo-permissions';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+
 
 
 class Register extends Component {

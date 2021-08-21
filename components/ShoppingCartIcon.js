@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
-import { Card, ListItem, Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';
 
@@ -13,11 +13,7 @@ const mapStateToProps = state => {
 
 const ShoppingCartIcon = (props) => {
 
-    const numberOfItems = props.cartItems.itemCount;/* props.cartItems.cartItems.map( item => {
-        const itemCount = 0;
-        itemCount = itemCount + item.count;
-        return itemCount;
-    })*/
+    const numberOfItems = props.cartItems.itemCount;
 
     return (
         <View style={{padding: 5}}>

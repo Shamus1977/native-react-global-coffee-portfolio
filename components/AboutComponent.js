@@ -15,7 +15,9 @@ const mapStateToProps = state => {
 const Mission = () => {
     return (
         <Card>
-            <Text style={{margin: 10}} >Here we strive to do this really, really, well.</Text>
+            <Text style={{margin: 10, fontSize:22, textAlign: 'center'}} >The mission of this sight is to help impoverished coffee farming regions and communities.
+                                            The site is the profile project of Shay Johnson, for the NuCamp Bootcamp Front End Course. 
+                                            Thanks for the Look!.</Text>
         </Card>
     )
 }
@@ -32,7 +34,9 @@ class About extends Component {
             return (
                 <ListItem
                     title={item.name}
+                    titleStyle={{fontSize:22}}
                     subtitle={item.description}
+                    subtitleStyle={{fontSize:20}}
                     
                 />
             )
