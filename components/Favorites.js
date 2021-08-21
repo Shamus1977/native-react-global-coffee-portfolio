@@ -7,7 +7,7 @@ import Intro from './IntroComponent';
 
 const mapStateToProps = state => {
     return {
-        regions: state.regionsHistory,
+        coffees: state.coffees,
         favorites: state.favorites
     }
 }
@@ -26,18 +26,18 @@ class Favorites extends Component {
                     title={item.name}
                     subtitle={item.description}
                     leftAvatar={{ source: require('../assets/images/coffee-beans-on-board.jpg') }}
-                    onPress={ () => navigate('RegionDetail', {regionId: item.id})}
+                    onPress={ () => navigate('CoffeeDetail', {targetId: item.id})}
                 />
             );
         };
 
-        if(this.props.regions.isLoading){
+        if(this.props.coffees.isLoading){
             return <Loading />
         }
-        if (this.props.regions.errMess) {
+        if (this.props.coffees.errMess) {
             return (
                 <View>
-                    <Text>{this.props.regions.errMess}</Text>
+                    <Text>{this.props.coffees.errMess}</Text>
                 </View>
             );
         }
@@ -48,8 +48,8 @@ class Favorites extends Component {
                     <Intro text='Your selected favorites:' />
                 </View>
                 <FlatList
-                    data={this.props.regions.regionsHistory.filter(
-                        region => this.props.favorites.includes(region.id)
+                    data={this.props.coffees.coffees.filter(
+                        coffee => this.props.favorites.includes(coffee.id)
                     )}
                     renderItem={renderFavoriteItem}
                     keyExtractor={item => item.id.toString()}

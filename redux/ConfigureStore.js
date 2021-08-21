@@ -8,6 +8,8 @@ import { charitiesReducer } from './charitiesReducer';
 import { toursReducer } from './toursReducer';
 import { favoritesReducer } from './favoritesReducer';
 import { regionsGeographyReducer } from './regionsGeographyReducer';
+import { coffeesCommentsReducer } from './coffeesCommentsReducer';
+import { coffeesReducer } from './coffeesReducer';
 import { cartItemReducer } from './cartItemReducer';
 
 export const ConfigureStore = () => {
@@ -21,6 +23,8 @@ export const ConfigureStore = () => {
             tours: toursReducer,
             favorites: favoritesReducer,
             cartItems: cartItemReducer,
+            coffeesComments: coffeesCommentsReducer,
+            coffees: coffeesReducer,
         }),
         applyMiddleware(thunk, logger)
     );

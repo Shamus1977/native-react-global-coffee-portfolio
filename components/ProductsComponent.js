@@ -1,11 +1,9 @@
 
 import React, { Component } from 'react';
-import {ScrollView, Text, FlatList, View, TextInput, Modal, StyleSheet, Share} from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements';
+import {ScrollView, Text, FlatList, View} from 'react-native';
+import { Card, ListItem, Button, Icon} from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postToCart } from '../redux/ActionCreators';
-import { COFFEES } from '../shared/coffees';
-import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -23,42 +21,22 @@ class Products extends Component {
         super(props);
         this.state = {
             cartItems: this.props.cartItems,
-            coffees: COFFEES,
-            showModal: false,
             itemCount: 0, 
         }
-    }
-
-    
-
-    toggleModal(){
-        this.setState({showModal: !this.state.showModal})
     }
 
     addItem(item) {
         this.props.postToCart(item.productNumber, item.price, 3, item.name, item.donation, item.weight);
     }
 
-
     render () {
-    const   renderProducts = ({item}) =>{
-        const brand = 'Name: ' + item.name;
-        const description = 'Description: ' + item.description;
-        const donation = 'Amount Given to Charity: $' + item.donation;
-        const price = 'Cost: $' + item.price;
-        const weight = 'Weight: ' + item.weight + ' lbs';
-        
-        const shareProduct = (title, message, url) => {
-            Share.share({
-                title,
-                massage: `${title}: ${message} ${url}`,
-                url
-            },
-            {
-                dialogTitle:'Share ' + title
-            });
-        }
-        
+        const   renderProducts = ({item}) =>{
+            const brand = 'Name: ' + item.name;
+            const description = 'Description: ' + item.description;
+            const donation = 'Amount Given to Charity: $' + item.donation;
+            const price = 'Cost: $' + item.price;
+            const weight = 'Weight: ' + item.weight + ' lbs';
+            
             return (
                 <View style={{borderBottomWidth:1}}>
                     <ListItem
@@ -88,14 +66,10 @@ class Products extends Component {
                                 {price}
                             </Text>
                         </Card>
-                        <View style={{flexDirection:'row'}}>
-                            <Icon
-                                name='share'
-                                type='font-awesome'
-                                color='blue'
-                                raised
-                                reverse
-                                onPress={() => shareProduct(brand, description, 'This will be the URL')}
+                        <View style={{margin:20, flex:2}}>
+                            <Button
+                                title='Details'
+                                onPress={() => this.props.navigate( 'CoffeeDetail', { targetId: item.id })}
                             />
                         </View>
                         <View style={{margin:20, flex:2}}>
@@ -126,13 +100,6 @@ class Products extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    },
-    });
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);

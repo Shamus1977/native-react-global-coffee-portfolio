@@ -8,7 +8,8 @@ import  SafeAreaView  from 'react-native-safe-area-view';
 import  Constants  from 'expo-constants';
 import { connect } from 'react-redux';
 import { fetchRegionsHistory, fetchCharities, fetchRegionsComments, 
-            fetchTours, fetchRegions, fetchRegionsGeography, fetchCartItems } from '../redux/ActionCreators';
+            fetchTours, fetchRegions, fetchRegionsGeography, fetchCartItems, 
+            fetchCoffeesComments, fetchCoffees } from '../redux/ActionCreators';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
@@ -34,6 +35,7 @@ import Payment from './PaymentComponent';
 import ShoppingCartIcon from './ShoppingCartIcon';
 import Login from './LoginComponent';
 import  Register  from './RegisterComponent';
+import CoffeeDetail from './CoffeeDetailComponent';
 
 
 
@@ -46,6 +48,8 @@ const mapDispatchToProps = {
     fetchCharities,
     fetchTours,
     fetchCartItems,
+    fetchCoffeesComments,
+    fetchCoffees,
 }
 
 /*
@@ -106,6 +110,7 @@ const CoffeesNavigator = createStackNavigator(
                 />
             })
         },
+        CoffeeDetail: {screen: CoffeeDetail},
         ShoppingCart: {screen: ShoppingCart},
         Payment: {screen: Payment},
     },
@@ -512,6 +517,8 @@ class Main extends Component {
         this.props.fetchCharities();
         this.props.fetchTours();
         this.props.fetchCartItems();
+        this.props.fetchCoffeesComments();
+        this.props.fetchCoffees();
     }
 
 

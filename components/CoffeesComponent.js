@@ -36,7 +36,9 @@ class Coffees extends Component {
             />
                 <ScrollView style={{backgroundColor:'rgba(0,0,0,.8)'}}>
                     <Intro text="The 'Amount given to charity', goes to a charity in the products region of orgin!" />
-                    <Products products={this.state.coffees}/>
+                    <Products products={this.state.coffees}
+                                navigate={navigate}
+                    />
                 </ScrollView>
             </View>
         )

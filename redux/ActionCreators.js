@@ -6,6 +6,83 @@ import { CHARITIES } from '../shared/charities';
 import { TOURS } from '../shared/tours';
 import { REGIONS_GEOGRAPHY } from '../shared/regionsGeography';
 import { CART_ITEMS } from '../shared/cartItems';
+import { COFFEES_COMMENTS } from '../shared/CoffeeComments';
+import { COFFEES } from '../shared/coffees';
+
+
+
+
+/***************************************  COFFEES ACTIONS ***********************************/
+/****************************************************************************************** */
+
+
+export const fetchCoffees = () => dispatch => {
+
+    dispatch(coffeesLoading(COFFEES));
+
+    setTimeout(() => {
+        dispatch(addCoffees(COFFEES));
+    }, 1000);
+};
+
+export const coffeesLoading = () => ({
+    type: ActionTypes.COFFEES_LOADING
+});
+
+export const coffeesFailed = errMess => ({
+    type: ActionTypes.COFFEES_FAILED,
+    payload: errMess
+});
+
+export const addCoffees = coffees => ({
+    type: ActionTypes.ADD_COFFEES,
+    payload: coffees
+});
+
+
+/*************************************** COFFEE COMMENTS ACTIONS *****************************/
+/****************************************************************************************** */
+
+
+export const fetchCoffeesComments = () => dispatch => {
+    dispatch(addCoffeesComments(COFFEES_COMMENTS));
+};
+
+export const coffeesCommentsLoading = () => ({
+    type: ActionTypes.COFFEES_COMMENTS_LOADING
+});
+
+export const coffeesCommentsFailed = errMess => ({
+    type: ActionTypes.COFFEES_COMMENTS_FAILED,
+    payload: errMess
+});
+
+export const addCoffeesComments = coffeesComments => ({
+    type: ActionTypes.ADD_COFFEES_COMMENTS,
+    payload: coffeesComments
+});
+
+export const postCoffeeComment =(name, rating, author, text ) => dispatch => {
+    const newComment = {
+        name,
+        rating,
+        author,
+        text,
+        date: new Date().toISOString(),
+    };
+
+    setTimeout( () => {
+        dispatch(addCoffeeComment(newComment));
+    },
+    2000);
+};
+
+export const addCoffeeComment = comment => (
+    {
+        type: ActionTypes.ADD_COFFEE_COMMENT,
+        payload: comment
+    }
+);
 
 
 /***************************************  REGIONS ACTIONS ***********************************/
@@ -202,15 +279,15 @@ export const addTours = tours => ({
 
 
 
-export const postFavorite = regionId => dispatch => {
+export const postFavorite = targetId => dispatch => {
     setTimeout( () => {
-        dispatch(addFavorite(regionId));
+        dispatch(addFavorite(targetId));
     }, 2000)
 }
 
-const addFavorite = regionId => ({
+const addFavorite = targetId => ({
     type: ActionTypes.ADD_FAVORITE,
-    payload: regionId
+    payload: targetId
 })
 
 
