@@ -322,8 +322,9 @@ export const addCartItems = cartItems => ({
 
 
 
-export const postToCart =( productNumber, price, name, donation, weight) => dispatch => {
+export const postToCart =( id, productNumber, price, name, donation, weight) => dispatch => {
     const newItem = {
+        id,
         productNumber,
         name,
         price,

@@ -51,11 +51,15 @@ class ShoppingCart extends Component {
         this.props.deleteFromCart(item);
     }
 
+    
+
     render () {
 
+    const totalPrice = this.props.cartItems.totalCost;
+    const roundedPrice = Math.round(totalPrice * 100) / 100;
+    const totalDonation = this.props.cartItems.totalDonation;
     const   renderItem = ({item}) =>{
         const count = this.itemCounter(item.productNumber);
-        const name = item.name;
             return (
                 <View style={{borderBottomWidth:1}}>
                     <ListItem 
@@ -103,6 +107,8 @@ class ShoppingCart extends Component {
         return (
             <ScrollView>
                 <Mission />
+                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Price: ${roundedPrice}`}</Text>
+                <Text style={{alignSelf:'center', fontSize:22, margin:5}}>{`Total Donation: ${totalDonation}`}</Text>
                 <Card
                     title='Shopping cart'
                 >

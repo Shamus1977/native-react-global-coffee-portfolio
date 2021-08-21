@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    postToCart: (productNumber, price, name, donation, weight) => (postToCart(productNumber, price, name, donation, weight)),
+    postToCart: (id, productNumber, price, name, donation, weight) => (postToCart(id, productNumber, price, name, donation, weight)),
 }
 
 
@@ -26,7 +26,7 @@ class Products extends Component {
     }
     
         addItem(item) {
-            this.props.postToCart(item.productNumber, item.price, item.name, item.donation, item.weight);
+            this.props.postToCart(item.id, item.productNumber, item.price, item.name, item.donation, item.weight);
             alert(JSON.stringify(this.props.cartItems));
         }
     
@@ -67,13 +67,13 @@ class Products extends Component {
                                 {price}
                             </Text>
                         </Card>
-                        <View style={{margin:20, flex:2}}>
+                        <View style={{marginHorizontal:20,marginTop:8, flex:2}}>
                             <Button
                                 title='Details'
                                 onPress={() => this.props.navigate( 'CoffeeDetail', { targetId: item.id })}
                             />
                         </View>
-                        <View style={{margin:20, flex:2}}>
+                        <View style={{marginHorizontal:20,marginTop:8, marginBottom:15, flex:2}}>
                             <Button
                                 title='Add To Cart'
                                 onPress={ () => {

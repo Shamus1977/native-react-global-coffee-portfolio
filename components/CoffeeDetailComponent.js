@@ -48,7 +48,7 @@ function RenderCoffeeDetail({coffee, comments, favorite, onShowModal, markFavori
                     <Text style={{margin: 10, fontSize: 22, textAlign:'center'}}>
                         {coffee.text}
                     </Text>
-                    <Text style={{margin: 20, fontSize: 20, textAlign:'center'}} >
+                    <Text style={{marginHorizontal: 20, marginHorizontal:5, fontSize: 20, textAlign:'center'}} >
                         {coffee.content}
                     </Text>
                     <View style={styles.cardRow}>
@@ -197,10 +197,11 @@ class CoffeeDetail extends Component  {
 const styles = StyleSheet.create({
     cardRow:{
         alignItems:'center',
-        justifyContent:'center',
+        justifyContent: 'space-around',
         flex:1,
         flexDirection:'row',
-        margin:20
+        marginHorizontal:20,
+        marginBottom:5,
     },
     modal:{
         justifyContent:'center',
